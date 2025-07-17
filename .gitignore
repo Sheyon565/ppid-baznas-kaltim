@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+*.pot
+*.pyc
+
+# Environment
+.env
+venv/
+env/
+ENV/
+
+# VSCode (optional)
+.vscode/
+
+# macOS (optional)
+.DS_Store
+
+# Django static files
+staticfiles/
+static/
+
+# Tailwind (django-tailwind)
+theme/node_modules/
+theme/static_src/
+theme/static/css/
+theme/static/js/
+
+# Tailwind cache and build files
+theme/.tailwind-debug/
+theme/.turbo/
+theme/dist/
+
+# Database (optional if you use SQLite)
+db.sqlite3
