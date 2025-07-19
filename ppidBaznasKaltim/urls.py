@@ -4,10 +4,12 @@ from . import views
 app_name = 'ppid'
 
 urlpatterns = [
+    #### Admin ####
+    path('artikel/', views.artikel_list, name='artikel_list'),
+    path('artikel/<int:pk>/', views.artikel_detail, name='artikel_detail'),
+    path('artikel/tambah/', views.artikel_create, name='artikel_create'),
+    
     path('', views.HomeView.as_view(), name='home'),
-    path('informasi-publik/', views.InformasiPublikView.as_view(), name='informasi_publik'),
-    path('layanan-informasi/', views.LayananInformasiView.as_view(), name='layanan_informasi'),
     path('regulasi/', views.regulasi, name='regulasi'),
-    path('laporan/', views.LaporanView.as_view(), name='laporan'),
     path('faq/', views.FAQView.as_view(), name='faq'),
 ]

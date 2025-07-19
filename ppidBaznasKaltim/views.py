@@ -1,6 +1,34 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import TemplateView, CreateView
+from django.contrib.auth.decorators import login_required
+from .models import ArtikelBaznas
+from .forms import ArtikelForms  # Pastikan file forms.py punya ArtikelForms
 
+# ✅ List artikel yang sudah publish
+def artikel_list(request):
+    artikels = ArtikelBaznas.objects.filter(status=True).order_by('-created_at')
+    return render(request, 'Artikel/artikel_list.html', {'artikels': artikels})
+
+# ✅ Detail artikel
+def artikel_detail(request, pk):
+    artikel = get_object_or_404(ArtikelBaznas, pk=pk, status=True)
+    return render(request, 'Artikel/artikel_detail.html', {'artikel': artikel})
+
+# ✅ Form tambah artikel (hanya untuk user login)
+@login_required
+def artikel_create(request):
+    if request.method == 'POST':
+        form = ArtikelForms(request.POST, request.FILES)
+        if form.is_valid():
+            artikel = form.save(commit=False)
+            artikel.created_by = request.user
+            artikel.save()
+            return redirect('artikel_list')  # Sesuaikan dengan nama URL kamu
+    else:
+        form = ArtikelForms()
+    return render(request, 'Artikel/artikel_form.html', {'form': form})
+
+# ✅ Home page
 class HomeView(TemplateView):
     template_name = 'index.html'
 
@@ -8,92 +36,20 @@ class HomeView(TemplateView):
         context = super().get_context_data(**kwargs)
         context.update({
             'title': 'PPID Baznas Kaltim',
-            'latest_info': [
-                {
-                    'date': '10/01/2025',
-                    'title': 'Pemberian Tumpeng Kepada Gubernur Kaltim',
-                    'description': (
-                        'BAZNAS Provinsi Kalimantan Timur menyerahkan pemberian Tumpeng kepada '
-                        'Gubernur Kalimantan Timur Isran Noor di Kantor Gubernur Kaltim, Samarinda.'
-                    ),
-                    'image': 'images/info1.jpg'
-                },
-                {
-                    'date': '08/01/2025',
-                    'title': 'Rapat Koordinasi Kabupaten Maros Sulawesi dan Tanjungpinang Provinsi',
-                    'description': (
-                        'BAZNAS Kaltim mengadakan rapat koordinasi dengan Kabupaten Maros dan Tanjungpinang '
-                        'untuk membahas program zakat, infaq dan shadaqah.'
-                    ),
-                    'image': 'images/info2.jpg'
-                }
-            ],
+            'latest_info': ArtikelBaznas.objects.filter(status=True).order_by('-created_at')[:5],
             'contact_info': {
-                'address': 'Jl. Harmonika No. 01 Samarinda Ulu, Dadi Mulya Kalimantan Timur',
-                'phone': '08115846664',
-                'fax': '08115846664'
+                'alamat': 'Jl. Contoh Alamat No. 123',
+                'email': 'info@baznasprovkaltim.or.id',
+                'telepon': '(0541) 123456'
             }
         })
         return context
 
-class InformasiPublikView(TemplateView):
-    template_name = 'ppid/informasi_publik.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context.update({
-            'title': 'Informasi Publik - PPID Baznas Kaltim',
-            'documents': [
-                {'title': 'Laporan Keuangan 2024', 'type': 'PDF', 'size': '2.5 MB'},
-                {'title': 'Program Kerja 2025', 'type': 'PDF', 'size': '1.8 MB'},
-                {'title': 'Struktur Organisasi', 'type': 'PDF', 'size': '500 KB'},
-                {'title': 'Profil BAZNAS Kaltim', 'type': 'PDF', 'size': '3.2 MB'}
-            ]
-        })
-        return context
-
-class LayananInformasiView(TemplateView):
-    template_name = 'ppid/layanan_informasi.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context.update({
-            'title': 'Layanan Informasi - PPID Baznas Kaltim',
-            'services': [
-                {'name': 'Permohonan Informasi Online', 'description': 'Ajukan permohonan informasi secara online'},
-                {'name': 'Konsultasi PPID', 'description': 'Konsultasi mengenai informasi publik'},
-                {'name': 'Pengaduan', 'description': 'Sampaikan pengaduan atau keluhan'},
-                {'name': 'Download Dokumen', 'description': 'Unduh dokumen informasi publik'}
-            ]
-        })
-        return context
-
+# ✅ Halaman regulasi (statis)
 def regulasi(request):
-    return render(request, 'ppid/regulasi.html')
+    return render(request, 'regulasi.html')
 
-class RegistrasiView(TemplateView):
-    template_name = 'ppid/registrasi.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Registrasi - PPID Baznas Kaltim'
-        return context
-
-class LaporanView(TemplateView):
-    template_name = 'ppid/laporan.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context.update({
-            'title': 'Laporan - PPID Baznas Kaltim',
-            'reports': [
-                {'year': '2024', 'title': 'Laporan Tahunan 2024', 'status': 'Tersedia'},
-                {'year': '2023', 'title': 'Laporan Tahunan 2023', 'status': 'Tersedia'},
-                {'year': '2022', 'title': 'Laporan Tahunan 2022', 'status': 'Tersedia'}
-            ]
-        })
-        return context
-
+# ✅ FAQ page
 class FAQView(TemplateView):
     template_name = 'ppid/faq.html'
 
@@ -102,27 +58,8 @@ class FAQView(TemplateView):
         context.update({
             'title': 'FAQ - PPID Baznas Kaltim',
             'faqs': [
-                {
-                    'question': 'Apa itu PPID?',
-                    'answer': (
-                        'PPID adalah Pejabat Pengelola Informasi dan Dokumentasi yang bertugas '
-                        'melaksanakan kebijakan informasi dan dokumentasi.'
-                    )
-                },
-                {
-                    'question': 'Bagaimana cara mengajukan permohonan informasi?',
-                    'answer': (
-                        'Anda dapat mengajukan permohonan informasi melalui formulir online '
-                        'atau datang langsung ke kantor BAZNAS Kaltim.'
-                    )
-                },
-                {
-                    'question': 'Berapa lama proses permohonan informasi?',
-                    'answer': (
-                        'Proses permohonan informasi maksimal 10 hari kerja sesuai dengan '
-                        'UU Keterbukaan Informasi Publik.'
-                    )
-                }
+                {'pertanyaan': 'Apa itu PPID?', 'jawaban': 'PPID adalah Pejabat Pengelola Informasi dan Dokumentasi.'},
+                {'pertanyaan': 'Bagaimana cara mengajukan permohonan informasi?', 'jawaban': 'Isi formulir permohonan informasi di website ini.'}
             ]
         })
         return context
