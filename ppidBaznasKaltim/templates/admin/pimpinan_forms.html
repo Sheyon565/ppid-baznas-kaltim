@@ -26,7 +26,7 @@
 
     <div class="mb-3">
         {{ form.deskripsi.label_tag }}
-        {{ form.deskripsi }}
+        {{ form.deskripsi|safe }}
         {% if form.deskripsi.errors %}
         <div class="text-danger">{{ form.deskripsi.errors }}</div>
         {% endif %}
