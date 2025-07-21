@@ -17,7 +17,7 @@ class ArtikelBaznas(models.Model):
 class Pimpinan(models.Model):
     nama = models.CharField(max_length=100)
     foto = models.ImageField(upload_to='pimpinan/', blank=True, null=True)
-    deskripsi = models.TextField()
+    deskripsi = CKEditor5Field('Text', config_name='extends')
 
     def __str__(self):
         return self.nama
