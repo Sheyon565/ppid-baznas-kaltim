@@ -16,14 +16,7 @@ class ArtikelForms(forms.ModelForm):
                     'required': True # Ini sudah ada, tapi penting untuk diketahui
                 }
             ),
-            'konten': CKEditor5Widget(
-                attrs={
-                    "class": "django_ckeditor_5",
-                    # Tambahan opsional: 'rows' untuk memberikan tinggi awal jika bukan WYSIWYG
-                    # tapi CKEditor sudah menangani tinggi secara otomatis.
-                },
-                config_name="extends" # Pastikan 'extends' didefinisikan di settings.py
-            ),
+            'konten': CKEditor5Widget(config_name='extends'),
             # Opsional: Menambahkan widget untuk 'gambar' dan 'status'
             # Jika 'gambar' adalah ImageField atau FileField
             'gambar': forms.ClearableFileInput(
@@ -46,14 +39,6 @@ class ArtikelForms(forms.ModelForm):
             # )
         }
 
-   
-class ArtikelForms(forms.ModelForm):
-    class Meta:
-        model = ArtikelBaznas
-        fields = ['judul', 'konten', 'gambar', 'status']
-        widgets = {
-            'konten': CKEditor5Widget(config_name='extends'),
-        }
 class PimpinanForm(forms.ModelForm):
     class Meta:
         model = Pimpinan
@@ -66,8 +51,5 @@ class PimpinanForm(forms.ModelForm):
                     'placeholder': 'Nama Pimpinan'
                 }
             ),
-            'deskripsi': CKEditor5Widget(
-                attrs={"class": "django_ckeditor_5"},
-                config_name="extends"
-            ),
+            'deskripsi': CKEditor5Widget(config_name='extends'),
         }
