@@ -1,178 +1,244 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 {% load static %}
-
-{% block title %}{{ title }}{% endblock %}
-
 {% block content %}
 
 <!-- Carousel Section -->
-<div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+<div
+  id="carouselExample"
+  class="carousel slide"
+  data-bs-ride="carousel"
+  data-bs-interval="3000"
+>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{% static 'img/file (5).jpg' %}" class="d-block w-100" alt="Slide 1">
+      <img src="{% static 'img/file (5).jpg' %}" class="d-block w-100" alt="Slide 1"/>
     </div>
     <div class="carousel-item">
-      <img src="{% static 'img/file (4).jpg' %}" class="d-block w-100" alt="Slide 2">
+      <img src="{% static 'img/file (4).jpg' %}" class="d-block w-100" alt="Slide 2"/>
     </div>
     <div class="carousel-item">
-      <img src="{% static 'img/file (3).jpg' %}" class="d-block w-100" alt="Slide 3">
+      <img src="{% static 'img/file (3).jpg' %}" class="d-block w-100" alt="Slide 3"/>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
     <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
     <span class="visually-hidden">Sebelumnya</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExample"
+    data-bs-slide="next"
+  >
+    <span
+      class="carousel-control-next-icon bg-dark rounded-circle"
+      aria-hidden="true"
+    ></span>
     <span class="visually-hidden">Berikutnya</span>
   </button>
 </div>
 
-
 <!-- Hero Section -->
 <section class="hero-section">
-    <div class="container">
-        <h1 class="display-4 mb-3">Akses Cepat</h1>
-        <h2 class="h3 mb-4">ANUGERAH KETERBUKAAN INFORMASI PUBLIK</h2>
-    </div>
+  <div class="container">
+    <h1 class="display-4 mb-3">Akses Cepat</h1>
+  </div>
 </section>
 
 <!-- Quick Access Cards -->
 <section class="py-5">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-lg-3 col-md-6">
-                <div class="quick-access-card">
-                    <div class="quick-access-icon">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <h5>Website Baznas Kaltim</h5>
-                    <p>Akses Website BAZNAS Kaltim</p>
-                    <a href="https://kaltim.baznas.go.id/" class="btn btn-primary-custom">Lihat Web Baznas Kaltim</a>
-                </div>
-            </div>
-            
-            <div class="col-lg-3 col-md-6">
-                <div class="quick-access-card">
-                    <div class="quick-access-icon">
-                        <i class="fas fa-user-plus"></i>
-                    </div>
-                    <h5>Layanan Pembayaran Zakat</h5>
-                    <a href="https://kaltim.baznas.go.id/bayarzakat" class="btn btn-primary-custom">Lihat Layanan Zakat</a>
-                </div>
-            </div>
-            
-            <div class="col-lg-3 col-md-6">
-                <div class="quick-access-card">
-                    <div class="quick-access-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h5>Layanan Infak</h5>
-                    <p>Layanan Infak BAZNAS Kaltim</p>
-                    <a href="https://kaltim.baznas.go.id/sedekah" class="btn btn-primary-custom">Lihat Layanan Infak</a>
-                </div>
-            </div>
-            
-            <div class="col-lg-3 col-md-6">
-                <div class="quick-access-card">
-                    <div class="quick-access-icon">
-                        <i class="fas fa-question-circle"></i>
-                    </div>
-                    <h5>FAQ</h5>
-                    <p>Pertanyaan yang sering diajukan</p>
-                    <a href="{% url 'ppid:faq' %}" class="btn btn-primary-custom">Lihat FAQ</a>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <div class="quick-access-card">
+          <div class="quick-access-icon">
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <h5>Website Baznas Kaltim</h5>
+          <p>Akses Website BAZNAS Kaltim</p>
+          <a href="https://kaltim.baznas.go.id/" class="btn btn-primary-custom text-white">Lihat Website</a>
         </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="quick-access-card">
+          <div class="quick-access-icon">
+            <i class="fas fa-user-plus"></i>
+          </div>
+          <h5>Layanan Pembayaran Zakat</h5>
+          <p>Layanan Zakat</p>
+          <a href="https://kaltim.baznas.go.id/bayarzakat" class="btn btn-primary-custom text-white">Lihat Layanan Zakat</a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="quick-access-card">
+          <div class="quick-access-icon">
+            <i class="fas fa-chart-bar"></i>
+          </div>
+          <h5>Layanan Infak</h5>
+          <p>Layanan Infak BAZNAS Kaltim</p>
+          <a href="https://kaltim.baznas.go.id/sedekah" class="btn btn-primary-custom text-white">Lihat Layanan Infak</a>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="quick-access-card">
+          <div class="quick-access-icon">
+            <i class="fas fa-question-circle"></i>
+          </div>
+          <h5>FAQ</h5>
+          <p>Pertanyaan yang sering diajukan</p>
+          <a href="{% url 'ppid:faq' %}" class="btn btn-primary-custom text-white">Lihat FAQ</a>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- Latest Information -->
-<section class="py-5" style="background-color: white;">
-    <div class="container">
-        <h2 class="section-title">Informasi Terbaru</h2>
-        
-        <div class="row">
-            {% for info in latest_info %}
-            <div class="col-lg-6 col-md-12">
-                <div class="info-card">
-                    <img src="https://via.placeholder.com/400x200/4CAF50/FFFFFF?text=BAZNAS+Kaltim" alt="{{ info.title }}">
-                    <div class="info-card-body">
-                        <div class="info-date">{{ info.date }}</div>
-                        <h5 class="mt-2 mb-3">{{ info.title }}</h5>
-                        <p class="text-muted">{{ info.description }}</p>
-                        <a href="#" class="btn btn-outline-success btn-sm">Baca Selengkapnya</a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
+
+<div class="container">
+    <h2 class="section-title text-center mb-5 fw-bold">ANUGERAH KETERBUKAAN INFORMASI PUBLIK</h2>
+
+    <div class="text-center">
+        <div class="p-3 border rounded shadow-sm d-inline-block" style="max-width: 1000px;">
+            <img src="{% static 'img/file (6).jpg' %}" alt="Anugerah Keterbukaan" class="img-fluid mb-3 rounded" style="border: 2px solid #4CAF50;">
+            <p class="fw-semibold text-dark">BAZNAS Provinsi Kaltim Meraih Predikat Opini Wajar Tanpa Pengecualian (WTP) Pada Audit Laporan Keuangan Tahun 2024 </p>
         </div>
     </div>
+</div>
+
+
+
+<!-- Informasi Terbaru -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="section-title text-center mb-5 fw-bold">Informasi Terbaru</h2>
+
+    <div class="row g-4">
+      {% for artikel in artikels %}
+      <div class="col-lg-6 col-md-12">
+        <div class="card h-100 border-0 shadow-sm">
+          {% if artikel.gambar %}
+          <img src="{{ artikel.gambar.url }}" class="card-img-top" alt="{{ artikel.judul }}" style="height: 250px; object-fit: cover;">
+          {% endif %}
+          <div class="card-body">
+            <small class="text-muted">{{ artikel.created_at|date:"d M Y" }}</small>
+            <h5 class="card-title mt-2">{{ artikel.judul }}</h5>
+            <p class="card-text text-muted">{{ artikel.konten|safe|truncatewords:20 }}</p>
+            <a href="/" class="btn btn-success btn-sm">Baca Selengkapnya</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </section>
+
 
 <!-- Video Section -->
 <section class="py-5">
-    <div class="container">
-        <h2 class="section-title">Video Baznas Kaltim</h2>
-        <div class="video-container">
-            <div class="ratio ratio-16x9" style="max-width: 800px; margin: 0 auto;">
-                <iframe 
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                    title="Video Baznas Kaltim"
-                    allowfullscreen>
-                </iframe>
-            </div>
+  <div class="container">
+    <h2 class="section-title text-center mb-4">Video Baznas Kaltim</h2>
+    <div class="row g-4">
+
+      <!-- Video 1 -->
+      <div class="col-md-4">
+        <div class="ratio ratio-16x9">
+          <iframe
+            src="https://www.youtube.com/embed/JeOiqiz-ElU"
+            title="Video 1"
+            allowfullscreen
+            style="border: none;">
+          </iframe>
         </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="col-md-4">
+        <div class="ratio ratio-16x9">
+          <iframe
+            src="https://www.youtube.com/embed/PhzV9QTdOI8"
+            title="Video 2"
+            allowfullscreen
+            style="border: none;">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="col-md-4">
+        <div class="ratio ratio-16x9">
+          <iframe
+            src="https://www.youtube.com/embed/zaQVdl_4Kbs"
+            title="Video 3"
+            allowfullscreen
+            style="border: none;">
+          </iframe>
+        </div>
+      </div>
+
     </div>
+  </div>
 </section>
 
+
 <!-- Public Information Service -->
-<section class="py-5" style="background-color: white;">
-    <div class="container">
-        <h2 class="section-title">Layanan Informasi Publik</h2>
-        
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <img src="https://via.placeholder.com/400x300/2E7D32/FFFFFF?text=GARUDA+PANCASILA" 
-                     alt="Garuda Pancasila" 
-                     class="img-fluid rounded shadow">
+<section class="py-5" style="background-color: white">
+  <div class="container">
+    <h2 class="section-title">Layanan Informasi Publik</h2>
+
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <img
+          src="{% static 'img/logo_baznas.png' %}"
+          alt="Garuda Pancasila"
+          class="img-fluid rounded shadow"
+        />
+      </div>
+      <div class="col-lg-6">
+        <div class="p-4">
+          <h4 class="mb-3">Kontak Baznas Kaltim</h4>
+          <div class="contact-info">
+            <div class="d-flex align-items-center mb-3">
+              <i
+                class="fas fa-map-marker-alt text-success me-3"
+                style="font-size: 1.5rem"
+              ></i>
+              <div>
+                <strong>Alamat:</strong><br />
+                {{ contact_info.address }}
+              </div>
             </div>
-            <div class="col-lg-6">
-                <div class="p-4">
-                    <h4 class="mb-3">Kontak Baznas Kaltim</h4>
-                    <div class="contact-info">
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="fas fa-map-marker-alt text-success me-3" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <strong>Alamat:</strong><br>
-                                {{ contact_info.address }}
-                            </div>
-                        </div>
-                        
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="fas fa-phone text-success me-3" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <strong>WhatsApp:</strong><br>
-                                {{ contact_info.phone }}
-                            </div>
-                        </div>
-                        
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="fas fa-fax text-success me-3" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <strong>Telepon:</strong><br>
-                                {{ contact_info.fax }}
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <a href="{% url 'ppid:layanan_informasi' %}" class="btn btn-primary-custom mt-3">
-                        Hubungi Kami
-                    </a>
-                </div>
+
+            <div class="d-flex align-items-center mb-3">
+              <i
+                class="fas fa-phone text-success me-3"
+                style="font-size: 1.5rem"
+              ></i>
+              <div>
+                <strong>WhatsApp:</strong><br />
+                {{ contact_info.phone }}
+              </div>
             </div>
+
+            <div class="d-flex align-items-center mb-3">
+              <i
+                class="fas fa-fax text-success me-3"
+                style="font-size: 1.5rem"
+              ></i>
+              <div>
+                <strong>Telepon:</strong><br />
+                {{ contact_info.fax }}
+              </div>
+            </div>
+          </div>
+
+          <a href="/" class="btn btn-primary-custom mt-3"> Hubungi Kami </a>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

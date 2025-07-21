@@ -1,7 +1,5 @@
 from django.db import models
-
 from django.contrib.auth.models import User
-
 from django_ckeditor_5.fields import CKEditor5Field
 
 class ArtikelBaznas(models.Model):
@@ -15,3 +13,11 @@ class ArtikelBaznas(models.Model):
     
     def __str__(self):
         return self.judul
+    
+class Pimpinan(models.Model):
+    nama = models.CharField(max_length=100)
+    foto = models.ImageField(upload_to='pimpinan/', blank=True, null=True)
+    deskripsi = models.TextField()
+
+    def __str__(self):
+        return self.nama

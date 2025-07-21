@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+  <h3 class="mb-4">{{ title }}</h3>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Simpan</button>
+    <a href="{% url 'daftar_pimpinan' %}" class="btn btn-secondary">Kembali</a>
+  </form>
+</div>
+{% endblock %}

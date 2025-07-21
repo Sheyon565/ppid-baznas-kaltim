@@ -62,7 +62,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -136,7 +136,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
 
 # Folder tempat file statis dikumpulkan saat production (misalnya untuk collectstatic)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -145,6 +144,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / "media"
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/admin-dashboard/'
+LOGOUT_REDIRECT_URL = '/login/'
 
 # URL prefix untuk file statis
 STATIC_URL = '/static/'
@@ -172,65 +178,37 @@ CKEDITOR_5_CUSTOM_CSS = 'path_to.css'  # optional
 CKEDITOR_5_ALLOW_ALL_IMAGE_UPLOADS = True
 CKEDITOR_5_RESTRICTED_USER_UPLOAD = True
 
+# settings.py
 CKEDITOR_5_CONFIGS = {
-    'default': {
-        'toolbar': {
-            'items': [
-                'heading', '|', 'bold', 'italic', 'link',
-                'bulletedList', 'numberedList', 'blockQuote', 'imageUpload'
+    "extends": {
+        "toolbar": ["heading", "|", "bold", "italic", "link", "bulletedList", "numberedList", "blockQuote"],
+        # Tambahkan plugin/toolbar lainnya sesuai kebutuhan
+        "image": {
+            "toolbar": [
+                "imageTextAlternative",
+                "toggleImageCaption",
+                "imageStyle:inline",
+                "imageStyle:block",
+                "imageStyle:side",
+                "linkImage",
             ]
         },
-        'list': {
-            'properties': {
-                'styles': True,
-                'startIndex': True,
-                'reversed': True,
-            }
-        }
+        "table": {
+            "contentToolbar": [
+                "tableColumn",
+                "tableRow",
+                "mergeTableCells",
+            ]
+        },
+        "heading": {
+            "options": [
+                {"model": "paragraph", "title": "Paragraph", "class": "ck-heading_paragraph"},
+                {"model": "heading1", "view": "h1", "title": "Heading 1", "class": "ck-heading_heading1"},
+                {"model": "heading2", "view": "h2", "title": "Heading 2", "class": "ck-heading_heading2"},
+            ]
+        },
     },
-    'extends': {
-        'blockToolbar': [
-            'paragraph', 'heading1', 'heading2', 'heading3', '|',
-            'bulletedList', 'numberedList', '|', 'blockQuote',
-        ],
-        'toolbar': {
-            'items': [
-                'heading', '|', 'outdent', 'indent', '|', 'bold', 'italic', 'link', 'underline', 'strikethrough',
-                'code', 'subscript', 'superscript', 'highlight', '|', 'codeBlock', 'sourceEditing', 'insertImage',
-                'bulletedList', 'numberedList', 'todoList', '|', 'blockQuote', 'imageUpload', '|',
-                'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'mediaEmbed', 'removeFormat',
-                'insertTable',
-            ],
-            'shouldNotGroupWhenFull': True
-        },
-        'image': {
-            'toolbar': [
-                'imageTextAlternative', '|',
-                'imageStyle:alignLeft', 'imageStyle:alignRight',
-                'imageStyle:alignCenter', 'imageStyle:side'
-            ],
-            'styles': ['full', 'side', 'alignLeft', 'alignRight', 'alignCenter']
-        },
-        'table': {
-            'contentToolbar': [
-                'tableColumn', 'tableRow', 'mergeTableCells',
-                'tableProperties', 'tableCellProperties'
-            ],
-        },
-        'heading': {
-            'options': [
-                {'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph'},
-                {'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1'},
-                {'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2'},
-                {'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3'},
-            ]
-        },
-        'list': {
-            'properties': {
-                'styles': True,
-                'startIndex': True,
-                'reversed': True,
-            }
-        }
+    "default": {
+        # konfigurasi default jika tidak ditentukan config_name
     }
 }

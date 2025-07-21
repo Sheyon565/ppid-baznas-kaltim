@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons (optional) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="container my-5">
+  <h2 class="fw-bold text-center mb-4">Tugas dan Fungsi BAZNAS Kalimantan Timur</h2>
+
+  <!-- Accordion Wrapper -->
+  <div class="accordion" id="accordionBaznas">
+
+    <!-- 1. TUGAS DAN FUNGSI BAZNAS KALTIM -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTugasFungsi">
+        <button class="accordion-button collapsed bg-success text-white fw-bold" type="button"
+          data-bs-toggle="collapse" data-bs-target="#collapseTugasFungsi" aria-expanded="false"
+          aria-controls="collapseTugasFungsi">
+          TUGAS DAN FUNGSI BAZNAS KALTIM
+        </button>
+      </h2>
+      <div id="collapseTugasFungsi" class="accordion-collapse collapse" aria-labelledby="headingTugasFungsi">
+        <div class="accordion-body">
+          <h5 class="fw-bold">Tugas PPID BAZNAS KALTIM</h5>
+          <ol>
+            <li>Memberikan pelayanan Informasi Publik yang cepat, tepat, dan berkualitas sesuai dengan ketentuan peraturan perundang-undangan.</li>
+            <li>Menyusun, menetapkan, melaksanakan, mengoordinasikan, mengawasi, mengevaluasi pelaksanaan kegiatan pengelolaan dan pelayanan informasi di lingkungan Badan Amil Zakat Nasional Provinsi Kalimantan Timur.</li>
+          </ol>
+          <h5 class="fw-bold">Fungsi PPID BAZNAS KALTIM</h5>
+          <ol class="mb-0">
+            <li>Sebagai pelaksana amanah Undang-Undang Keterbukaan Informasi Publik.</li>
+            <li>Sebagai sumber data dan ilmu pengetahuan di bidang pengelolaan zakat.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. TUGAS PPID PELAKSANA -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingPpidPelaksana">
+        <button class="accordion-button collapsed bg-success text-white fw-bold" type="button"
+          data-bs-toggle="collapse" data-bs-target="#collapsePpidPelaksana" aria-expanded="false"
+          aria-controls="collapsePpidPelaksana">
+          TUGAS PPID PELAKSANA
+        </button>
+      </h2>
+      <div id="collapsePpidPelaksana" class="accordion-collapse collapse" aria-labelledby="headingPpidPelaksana">
+        <div class="accordion-body">
+          <h5 class="fw-bold">PPID Pelaksana Bertugas:</h5>
+          <ol>
+            <li>Membantu PPID melaksanakan tanggung jawab, tugas, dan kewenangannya;</li>
+            <li>Melaksanakan kebijakan teknis layanan Informasi Publik yang telah ditetapkan PPID;</li>
+            <li>Mengonsolidasikan proses penyimpanan, pendokumentasian, penyediaan, dan pelayanan Informasi Publik;</li>
+            <li>Mengumpulkan dokumen Informasi Publik dari Petugas Pelayanan Informasi di Badan Publik;</li>
+            <li>Membantu PPID melakukan verifikasi dokumen Informasi Publik;</li>
+            <li>Membantu membuat, mengelola, memelihara, dan memutakhirkan Daftar Informasi Publik; dan</li>
+            <li>Menjamin ketersediaan dan akselerasi Layanan Informasi Publik agar mudah diakses oleh publik.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. TUGAS PPID -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingPpid">
+        <button class="accordion-button collapsed bg-success text-white fw-bold" type="button"
+          data-bs-toggle="collapse" data-bs-target="#collapsePpid" aria-expanded="false"
+          aria-controls="collapsePpid">
+          TUGAS PPID
+        </button>
+      </h2>
+      <div id="collapsePpid" class="accordion-collapse collapse" aria-labelledby="headingPpid">
+        <div class="accordion-body">
+          <h5 class="fw-bold">PPID Bertugas:</h5>
+          <ol>
+            <li>Menyusun dan melaksanakan kebijakan Layanan Informasi Publik;</li>
+            <li>Menyusun laporan pelaksanaan kebijakan Layanan Informasi Publik;</li>
+            <li>Mengoordinasikan dan mengkonsolidasikan proses penyimpanan, pendokumentasian, penyediaan, dan pelayanan Informasi Publik;</li>
+            <li>Melakukan koordinasi dan konsolidasi pengumpulan dokumen Informasi Publik dari PPID Pelaksana dan/atau Petugas Pelayanan Informasi di Badan Publik;</li>
+            <li>Melakukan verifikasi dokumen Informasi Publik;</li>
+            <li>Menentukan Informasi Publik yang dapat diakses publik dan layak untuk dipublikasikan;</li>
+            <li>Melakukan pengujian tentang konsekuensi atas Informasi Publik yang akan dikecualikan;</li>
+            <li>Melakukan pengelolaan, pemeliharaan, dan pemutakhiran Daftar Informasi Publik;</li>
+            <li>Menyediakan Informasi Publik secara efektif dan efisien agar mudah diakses oleh publik; dan</li>
+            <li>Melakukan pembinaan, pengawasan, evaluasi, dan monitoring atas pelaksanaan kebijakan teknis Informasi Publik yang dilakukan oleh PPID Pelaksana dan/atau Petugas Pelayanan Informasi.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- End Accordion -->
+</div>
+
+{% endblock %}

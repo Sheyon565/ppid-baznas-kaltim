@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block title %}Profil | BAZNAS Kaltim{% endblock %}
+
+{% block content %}
+
+<!-- Tambahkan sebelum </body> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<section class="hero text-center py-5 bg-light">
+  <div class="container">
+    <h1 class="fw-bold">Profil BAZNAS Provinsi Kalimantan Timur</h1>
+    <p class="lead">Membangun sinergi dan transparansi dalam pengelolaan zakat</p>
+  </div>
+</section>
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="card p-4 shadow border-0">
+      <div class="card-body">
+        <p class="text-justify">
+          Badan Amil Zakat Nasional Provinsi Kalimantan Timur (BAZNAS Kaltim) merupakan lembaga pemerintah non-struktural yang bersifat mandiri dan bertanggung jawab kepada BAZNAS Republik Indonesia (BAZNAS RI) sebagai bagian dari sistem pengelolaan zakat secara nasional berdasarkan Undang-Undang Nomor 23 Tahun 2011 tentang Pengelolaan Zakat.
+        </p>
+        <p>
+          Sebagai perpanjangan tangan dari BAZNAS RI di tingkat provinsi, BAZNAS Kaltim menjalankan tugas pengelolaan zakat, infak, dan sedekah (ZIS) serta dana sosial keagamaan lainnya di wilayah Kalimantan Timur. Pengelolaan tersebut mencakup fungsi:
+        </p>
+        <ul>
+          <li>Perencanaan pengumpulan, pendistribusian, dan pendayagunaan zakat;</li>
+          <li>Pelaksanaan pengumpulan, pendistribusian, dan pendayagunaan zakat;</li>
+          <li>Pengendalian atas kegiatan pengumpulan, pendistribusian, dan pendayagunaan zakat;</li>
+          <li>Pelaporan dan pertanggungjawaban atas pengelolaan zakat kepada publik dan otoritas yang berwenang.</li>
+        </ul>
+
+        <h4 class="mt-5 fw-bold">Keterbukaan Informasi Publik</h4>
+        <p>
+          Dalam pelaksanaan tugas dan fungsinya, BAZNAS Kaltim berkomitmen untuk mematuhi ketentuan peraturan perundang-undangan, termasuk Undang-Undang Nomor 14 Tahun 2008 tentang Keterbukaan Informasi Publik, yang menjamin hak masyarakat untuk memperoleh akses terhadap informasi publik.
+        </p>
+        <p>
+          Sebagai bentuk implementasi dari keterbukaan informasi dan untuk mewujudkan tata kelola lembaga yang baik, transparan, efektif, efisien, akuntabel, serta dapat dipertanggungjawabkan, BAZNAS Kaltim membentuk Pejabat Pengelola Informasi dan Dokumentasi (PPID) berdasarkan Keputusan Ketua BAZNAS Nomor 042 Tahun 2022 tentang Penetapan PPID BAZNAS.
+        </p>
+
+        <h4 class="mt-4 fw-bold">Tujuan Pembentukan PPID BAZNAS Kaltim</h4>
+        <ul>
+          <li>Memberikan pelayanan informasi publik yang cepat, tepat waktu, biaya ringan, dan cara sederhana;</li>
+          <li>Menjamin hak masyarakat atas informasi pengelolaan dana zakat;</li>
+          <li>Mendukung transparansi dan akuntabilitas pengelolaan zakat di Kalimantan Timur;</li>
+          <li>Meningkatkan kepercayaan publik terhadap pengelolaan dana ZIS secara profesional dan syar’i.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === Pimpinan BAZNAS === -->
+<div class="container my-5">
+  <h3 class="fw-bold mb-4 text-center">Pimpinan BAZNAS Kalimantan Timur</h3>
+  <div class="row justify-content-center g-4">
+    {% for pimpinan in pimpinan_list %}
+    <div class="col-md-6 col-lg-4 d-flex align-items-stretch">
+      <div class="card shadow border-0 h-100">
+        {% if pimpinan.foto %}
+        <img src="{{ pimpinan.foto.url }}" class="card-img-top" alt="{{ pimpinan.nama }}">
+        {% else %}
+        <img src="https://ui-avatars.com/api/?name={{ pimpinan.nama|urlencode }}&background=0D8ABC&color=fff&size=300" class="card-img-top" alt="{{ pimpinan.nama }}">
+        {% endif %}
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold mb-2">{{ pimpinan.nama }}</h5>
+          {% if pimpinan.jabatan %}
+          <p class="card-subtitle text-muted mb-2">{{ pimpinan.jabatan }}</p>
+          {% endif %}
+          {% if pimpinan.deskripsi %}
+          <p class="card-text">{{ pimpinan.deskripsi|truncatewords:25 }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div class="col-12 text-center">
+      <p class="text-muted">Belum ada data pimpinan.</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'admin/base_admin.html' %}
+
+{% block title %}Daftar Pimpinan{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Struktur Pimpinan</h1>
+
+<a href="{% url 'ppid:admin_pimpinan_tambah' %}" class="btn btn-primary mb-3">Tambah Pimpinan</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Nama</th>
+            <th>Jabatan</th>
+            <th>Foto</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in pimpinan %}
+        <tr>
+            <td>{{ p.nama }}</td>
+            <td>{{ p.jabatan }}</td>
+            <td>
+                {% if p.foto %}
+                    <img src="{{ p.foto.url }}" width="60">
+                {% else %}
+                    Tidak ada foto
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'ppid:admin_pimpinan_update' p.id %}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{% url 'ppid:admin_pimpinan_delete' p.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Hapus data ini?')">Hapus</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4" class="text-center">Belum ada pimpinan</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

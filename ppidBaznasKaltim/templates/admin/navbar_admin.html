@@ -1,0 +1,29 @@
+<!-- Sidebar Navbar -->
+<div class="d-flex">
+  <!-- Sidebar -->
+  <nav class="bg-light border-end vh-100 p-3" style="width: 250px; position: fixed;">
+    <a class="navbar-brand fw-bold mb-4 d-block" href="{% url 'ppid:admin_dashboard' %}">🛠️ Admin Panel</a>
+    <ul class="nav flex-column">
+      <li class="nav-item mb-2">
+        <a class="nav-link text-dark" href="{% url 'ppid:admin_artikel_list' %}">
+          📰 Kelola Artikel
+        </a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link text-dark" href="{% url 'ppid:admin_pimpinan_list' %}">
+          👤 Kelola Pimpinan
+        </a>
+      </li>
+      <li class="nav-item mt-4">
+        <a href="{% url 'ppid:logout' %}" class="btn btn-danger w-100">Logout</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="flex-grow-1" style="margin-left: 250px;">
+    <!-- Tambahkan di sini isi konten halaman -->
+    {% block content %}
+    {% endblock %}
+  </div>
+</div>
