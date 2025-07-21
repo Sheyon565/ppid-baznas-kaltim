@@ -68,4 +68,17 @@
 
 {% block js %}
 <script src="{% static 'django_ckeditor_5/dist/bundle.js' %}"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const editor = document.querySelectorAll(".django_ckeditor_5");
+
+    editor.forEach((el) => {
+      ClassicEditor
+        .create(el)
+        .catch((error) => {
+          console.error("CKEditor initialization error:", error);
+        })
+    })
+  })
+</script>
 {% endblock %}
