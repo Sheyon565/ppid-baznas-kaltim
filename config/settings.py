@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'ppidBaznasKaltim',
     'tailwind',
     'theme',
-    'django_ckeditor_5'
+    'django_ckeditor_5',
 ]
 
 MIDDLEWARE = [
