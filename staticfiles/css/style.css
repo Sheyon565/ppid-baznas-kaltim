@@ -1,0 +1,245 @@
+@font-face {
+  font-family: 'GothamMedium';
+  src: url('/static/fonts/GothamMedium.woff2') format('woff2'),
+       url('/static/fonts/GothamMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GothamBold';
+  src: url('/static/fonts/GothamBold.woff2') format('woff2'),
+       url('/static/fonts/GothamBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  font-family: 'GothamMedium', sans-serif;
+}
+
+.fw-bold, strong, b {
+  font-family: 'GothamBold', sans-serif;
+}
+
+/* Contoh tambahan style opsional */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+div {
+  font-family: "Gotham", sans-serif;
+  font-weight: normal;
+}
+
+.navbar,
+.footer,
+.btn,
+.info-card-body,
+.card-body {
+  font-family: "Gotham", sans-serif;
+}
+
+:root {
+  --primary-green: #4caf50;
+  --light-green: #e8f5e8;
+  --dark-green: #2e7d32;
+}
+
+
+.navbar {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: var(--dark-green) !important;
+}
+
+.navbar-nav .nav-link {
+  color: #333;
+  font-weight: 500;
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem !important;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: var(--light-green);
+  color: var(--dark-green);
+}
+
+/* Dropdown submenu positioning */
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-left: 0.1rem;
+  margin-top: -0.5rem;
+  display: none;
+  border-radius: 0.5rem;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+  display: block;
+}
+
+
+.hero-section {
+  background: linear-gradient(100deg, var(--primary-green),);
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.quick-access-card {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  height: 100%;
+}
+
+.quick-access-card:hover {
+  transform: translateY(-5px);
+}
+
+.quick-access-icon {
+  font-size: 3rem;
+  color: var(--primary-green);
+  margin-bottom: 1rem;
+}
+
+.info-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.info-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.info-card-body {
+  padding: 1.5rem;
+}
+
+.info-date {
+  color: var(--primary-green);
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.btn-primary-custom {
+  background-color: var(--primary-green);
+  border-color: var(--primary-green);
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+  font-weight: normal;
+}
+
+.btn-primary-custom:hover {
+  background-color: var(--dark-green);
+  border-color: var(--dark-green);
+}
+
+.footer {
+  background-color: var(--dark-green);
+  color: white;
+  padding: 3rem 0 1rem;
+  margin-top: 4rem;
+}
+
+.footer h5 {
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.footer p,
+.footer a {
+  color: #e8f5e8;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: white;
+}
+
+.section-title {
+  color: var(--dark-green);
+  text-align: center;
+  margin: 3rem 0 2rem;
+  font-weight: bold;
+}
+
+.video-container {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.map-container {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 2rem 0;
+  }
+
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .quick-access-card {
+    margin-bottom: 1rem;
+  }
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #2d3e50;
+}
+
+.card-title {
+  font-weight: bold;
+  color: #1c2a3a;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.card img {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.btn-success {
+  background-color: #198754;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #146c43;
+}

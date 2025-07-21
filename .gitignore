@@ -19,8 +19,6 @@ ENV/
 .DS_Store
 
 # Django static files
-staticfiles/
-static/
 
 # Tailwind (django-tailwind)
 theme/node_modules/
