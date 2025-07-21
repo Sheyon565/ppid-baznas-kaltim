@@ -67,7 +67,6 @@ python-slugify==8.0.4
 pythonds==1.2.1
 pytz==2024.1
 pyvis==0.3.2
-pywin32==306
 PyYAML==6.0.2
 pyzmq==26.0.2
 requests==2.32.4
