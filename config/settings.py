@@ -24,12 +24,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_5l7^w2i1v7$38myo9g)fv!#@^ml-g*v*tk-%6=!9n88$#4_m#'
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "fallback-secret-if-not-set")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.up.railway.app',
+]
 
 
 # Application definition
@@ -90,11 +94,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'baznaskaltim',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',  # BENAR: Tanpa :8000
-        'PORT': '3306',       # Port untuk MySQL
+        'NAME': os.environ.get('MYSQLDATABASE'),
+        'USER': os.environ.get('MYSQLUSER'),
+        'PASSWORD': os.environ.get('MYSQLPASSWORD'),
+        'HOST': os.environ.get('MYSQLHOST'),  # BENAR: Tanpa :8000
+        'PORT': os.environ.get('MYSQLPORT', '3306'),       # Port untuk MySQL
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         },

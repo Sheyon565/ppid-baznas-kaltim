@@ -15,6 +15,7 @@ cycler==0.12.1
 debugpy==1.8.1
 decorator==5.1.1
 distlib==0.3.8
+dj-database-url==3.0.1
 Django==5.0.6
 django-ckeditor==6.7.3
 django-ckeditor-5==0.2.18
