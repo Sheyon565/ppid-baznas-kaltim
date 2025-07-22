@@ -42,9 +42,8 @@
             <ul class="dropdown-menu" aria-labelledby="layananDropdown">
 
               <!-- Submenu: Formulir -->
-              <li class="dropdown position-relative dropend">
-                <a class="dropdown-item dropdown-toggle" href="#" id="formulirDropdown" role="button"
-                  data-bs-toggle="dropdown">
+              <li class="dropdown position-relative">
+                <a class="dropdown-item dropdown-toggle" href="#" id="formulirDropdown" role="button">
                   Formulir
                 </a>
                 <ul class="dropdown-menu shadow" aria-labelledby="formulirDropdown">
@@ -145,31 +144,5 @@
 
     navBarList.addEventListener("hidden.bs.collapse", () => isShown = false)
   });
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    function isMobileView() {
-      return window.innerWidth < 992;
-    }
-
-    const submenuToggle = document.querySelector("#formulirDropdown");
-    const submenu = submenuToggle?.nextElementSibling;
-
-    submenuToggle?.addEventListener("click", (e) => {
-      if (isMobileView()) {
-        e.preventDefault();
-        e.stopPropagation();
-        submenu.classList.toggle("show");
-      }
-    });
-
-    document.addEventListener("click", (e) => {
-      if (isMobileView()) {
-        if (!submenu.contains(e.target) && !submenuToggle.contains(e.target)) {
-          submenu.classList.remove("show");
-        }
-      }
-    })
-  })
 </script>
 {% endblock %}
