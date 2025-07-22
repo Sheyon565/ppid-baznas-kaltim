@@ -19,7 +19,6 @@
         <thead class="text-light" style="background-color: #259148;">
           <tr>
             <th>👤 Nama</th>
-            <th>🧰 Jabatan</th>
             <th>🖼️ Foto</th>
             <th>⚙️ Aksi</th>
           </tr>
@@ -28,7 +27,6 @@
           {% for p in pimpinan %}
           <tr>
             <td class="fw-semibold">{{ p.nama }}</td>
-            <td>{{ p.jabatan }}</td>
             <td>
               {% if p.foto %}
                 <img src="{{ p.foto.url }}" alt="{{ p.nama }}" class="rounded shadow-sm" width="60" height="60" style="object-fit: cover;">
