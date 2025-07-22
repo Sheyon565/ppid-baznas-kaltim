@@ -74,8 +74,9 @@ def login_view(request):
     return render(request, 'admin/admin_login.html')
 
 
-@login_required(login_url='ppid:login')
+@login_required
 def admin_dashboard(request):
+    # Semua user login bisa akses
     artikel_count = ArtikelBaznas.objects.count()
     pimpinan_count = Pimpinan.objects.count()
     artikel_terbaru = ArtikelBaznas.objects.order_by('-created_at')[:5]
