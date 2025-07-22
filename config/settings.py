@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'django_ckeditor_5',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
