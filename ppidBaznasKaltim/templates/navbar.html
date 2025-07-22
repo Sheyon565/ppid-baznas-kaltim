@@ -152,9 +152,13 @@
 
     submenuTrigger.addEventListener("click", function (e) {
       e.preventDefault();
-
+      e.stopPropagation();
       submenu.classList.toggle("show");
     });
+
+    submenu.addEventListener("click", function (e) {
+      e.stopPropagation();
+    })
 
     document.addEventListener("click", function (e) {
       if (!submenu.contains(e.target) && !submenuTrigger.contains(e.target)) {
