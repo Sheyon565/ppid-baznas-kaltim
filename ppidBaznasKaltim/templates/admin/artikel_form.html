@@ -3,15 +3,19 @@
 {% load widget_tweaks %}
 
 {% block css %}
-<link href="{% static 'django_ckeditor_5/dist/styles.css' %}" rel="stylesheet" />
+<!-- Cek bahwa file ini benar-benar ada di dalam static/django_ckeditor_5/dist -->
+<link href="{% static 'django_ckeditor_5/dist/styles.css' %}" rel="stylesheet">
+
+<!-- Pastikan file style.css kamu berada di static/css/style.css -->
 <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
 <style>
   .django-ckeditor-widget {
     width: 100%;
     min-height: 300px;
   }
-
   .form-label {
     font-weight: 600;
     margin-bottom: 8px;
@@ -21,6 +25,7 @@
 
 {% block content %}
 {{ form.media }}
+
 <div class="row mt-5">
   <div class="col-lg-10 col-md-12 mx-auto">
     <div class="card shadow border-0">
@@ -70,7 +75,9 @@
 {% endblock %}
 
 {% block js %}
+<!-- Pastikan bundle.js benar-benar ada -->
 <script src="{% static 'django_ckeditor_5/dist/bundle.js' %}"></script>
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const editor = document.querySelectorAll(".django-ckeditor-widget");
@@ -80,8 +87,8 @@
         .create(el)
         .catch((error) => {
           console.error("CKEditor initialization error:", error);
-        })
-    })
-  })
+        });
+    });
+  });
 </script>
 {% endblock %}
