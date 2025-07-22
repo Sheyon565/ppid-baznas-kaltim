@@ -3,39 +3,55 @@
 {% block title %}Daftar Pimpinan{% endblock %}
 
 {% block content %}
-<h1 class="mb-4">Struktur Pimpinan</h1>
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<div class="card shadow-sm border-0">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="text-success fw-bold"><i class="bi bi-diagram-3"></i> Struktur Pimpinan</h2>
+      <a href="{% url 'ppid:admin_pimpinan_tambah' %}" class="btn btn-success">
+        <i class="bi bi-plus-circle-fill me-1"></i> Tambah Pimpinan
+      </a>
+    </div>
 
-<a href="{% url 'ppid:admin_pimpinan_tambah' %}" class="btn btn-primary mb-3">Tambah Pimpinan</a>
-
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Nama</th>
-            <th>Jabatan</th>
-            <th>Foto</th>
-            <th>Aksi</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for p in pimpinan %}
-        <tr>
-            <td>{{ p.nama }}</td>
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead class="text-light" style="background-color: #259148;">
+          <tr>
+            <th>👤 Nama</th>
+            <th>🧰 Jabatan</th>
+            <th>🖼️ Foto</th>
+            <th>⚙️ Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for p in pimpinan %}
+          <tr>
+            <td class="fw-semibold">{{ p.nama }}</td>
             <td>{{ p.jabatan }}</td>
             <td>
-                {% if p.foto %}
-                    <img src="{{ p.foto.url }}" width="60">
-                {% else %}
-                    Tidak ada foto
-                {% endif %}
+              {% if p.foto %}
+                <img src="{{ p.foto.url }}" alt="{{ p.nama }}" class="rounded shadow-sm" width="60" height="60" style="object-fit: cover;">
+              {% else %}
+                <span class="text-muted fst-italic">Tidak ada foto</span>
+              {% endif %}
             </td>
             <td>
-                <a href="{% url 'ppid:admin_pimpinan_update' p.id %}" class="btn btn-warning btn-sm">Edit</a>
-                <a href="{% url 'ppid:admin_pimpinan_delete' p.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Hapus data ini?')">Hapus</a>
+              <a href="{% url 'ppid:admin_pimpinan_update' p.id %}" class="btn btn-sm btn-warning">
+                <i class="bi bi-pencil-square"></i> Edit
+              </a>
+              <a href="{% url 'ppid:admin_pimpinan_delete' p.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Hapus data ini?')">
+                <i class="bi bi-trash3"></i> Hapus
+              </a>
             </td>
-        </tr>
-        {% empty %}
-        <tr><td colspan="4" class="text-center">Belum ada pimpinan</td></tr>
-        {% endfor %}
-    </tbody>
-</table>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="4" class="text-center text-muted">Belum ada pimpinan</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 {% endblock %}

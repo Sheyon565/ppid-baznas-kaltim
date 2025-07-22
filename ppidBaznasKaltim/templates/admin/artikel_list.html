@@ -4,18 +4,18 @@
 {% block content %}
 <div class="row mt-4">
   <div class="col-12">
-    <div class="card shadow border-radius-xl">
-      <div class="card-header d-flex justify-content-between align-items-center bg-gradient-dark text-white py-3 px-4">
-        <h5 class="mb-0 text-white">📚 Daftar Artikel Anda</h5>
-        <a class="btn btn-warning btn-sm fw-bold" href="{% url 'ppid:admin_artikel_tambah' %}">
+    <div class="card shadow border-0">
+      <div class="card-header d-flex justify-content-between align-items-center" style="background-color: #259148;">
+        <h5 class="mb-0 text-white">📚 Daftar Artikel</h5>
+        <a class="btn fw-bold text-white" style="background-color: #FDC727;" href="{% url 'ppid:admin_artikel_tambah' %}">
           + Tambah Artikel
         </a>
       </div>
 
-      <div class="card-body px-0 py-0">
-        <div class="table-responsive p-4">
-          <table class="table align-items-center mb-0" id="datatable-search">
-            <thead class="bg-light">
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover align-items-center mb-0" id="datatable-search">
+            <thead style="background-color: #e9f5ee;">
               <tr>
                 <th class="text-uppercase text-secondary text-xs font-weight-bold">No</th>
                 <th class="text-uppercase text-secondary text-xs font-weight-bold">Judul</th>
@@ -26,32 +26,32 @@
             </thead>
             <tbody>
               {% for artikel in artikel %}
-              <tr>
-                <td class="text-sm text-dark">{{ forloop.counter }}</td>
+              <tr class="align-middle">
+                <td class="text-sm text-muted">{{ forloop.counter }}</td>
                 <td>
-                  <p class="mb-0 text-sm fw-bold">{{ artikel.judul }}</p>
-                  <span class="badge bg-gradient-info mt-1">by: {{ artikel.created_by }}</span>
+                  <p class="mb-0 text-dark fw-bold">{{ artikel.judul }}</p>
+                  <span class="badge bg-info-subtle text-dark mt-1">by: {{ artikel.created_by }}</span>
                 </td>
                 <td>
                   {% if artikel.status %}
-                    <span class="badge bg-success">Publik</span>
+                    <span class="badge bg-success-subtle text-success">Publik</span>
                   {% else %}
-                    <span class="badge bg-secondary">Draft</span>
+                    <span class="badge bg-secondary-subtle text-dark">Draft</span>
                   {% endif %}
                 </td>
                 <td class="text-sm text-muted">{{ artikel.created_at|date:"d M Y H:i" }}</td>
                 <td class="text-center">
-                  <a class="btn btn-warning btn-sm" href="{% url 'ppid:admin_artikel_update' artikel.id %}">
-                    <i class="material-icons text-sm">edit</i> Edit
+                  <a class="btn btn-sm text-white me-2" style="background-color: #FDC727;" href="{% url 'ppid:admin_artikel_update' artikel.id %}">
+                    ✏️ Edit
                   </a>
-                  <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus artikel ini?')" href="{% url 'ppid:admin_artikel_delete' artikel.id %}">
-                    <i class="material-icons text-sm">delete</i> Hapus
+                  <a class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus artikel ini?')" href="{% url 'ppid:admin_artikel_delete' artikel.id %}">
+                    🗑️ Hapus
                   </a>
                 </td>
               </tr>
               {% empty %}
               <tr>
-                <td colspan="5" class="text-center text-muted">Belum ada artikel ditambahkan.</td>
+                <td colspan="5" class="text-center text-muted py-4">Belum ada artikel ditambahkan.</td>
               </tr>
               {% endfor %}
             </tbody>

@@ -3,35 +3,52 @@
 {% block title %}{{ title }} Pimpinan{% endblock %}
 
 {% block content %}
-<h1 class="mb-4">{{ title }} Pimpinan</h1>
+<div class="row mt-5">
+  <div class="col-lg-8 col-md-10 mx-auto">
+    <div class="card shadow border-0 rounded-4">
+      <div class="card-header bg-gradient-primary text-white p-4 d-flex align-items-center">
+        <i class="bi bi-person-vcard-fill fs-4 me-2"></i>
+        <h5 class="text-dark mb-0">{{ title }} Pimpinan</h5>
+      </div>
+      <div class="card-body p-4">
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
 
-<form method="post" enctype="multipart/form-data" class="mb-4">
-    {% csrf_token %}
-    <div class="mb-3">
-        {{ form.nama.label_tag }}
-        {{ form.nama }}
-        {% if form.nama.errors %}
-            <div class="text-danger">{{ form.nama.errors }}</div>
-        {% endif %}
+          <div class="mb-4">
+            <label class="form-label fw-semibold">Nama Pimpinan</label>
+            {{ form.nama|add_class:"form-control" }}
+            {% if form.nama.errors %}
+              <small class="text-danger">{{ form.nama.errors }}</small>
+            {% endif %}
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-semibold">Foto Pimpinan</label>
+            {{ form.foto|add_class:"form-control" }}
+            {% if form.foto.errors %}
+              <small class="text-danger">{{ form.foto.errors }}</small>
+            {% endif %}
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-semibold">Deskripsi</label>
+            {{ form.deskripsi }}
+            {% if form.deskripsi.errors %}
+              <small class="text-danger">{{ form.deskripsi.errors }}</small>
+            {% endif %}
+          </div>
+
+          <div class="text-end">
+            <button type="submit" class="btn btn-success px-4">
+              <i class="bi bi-save me-1"></i> Simpan
+            </button>
+            <a href="{% url 'ppid:admin_pimpinan_list' %}" class="btn btn-secondary ms-2">
+              <i class="bi bi-x-circle me-1"></i> Batal
+            </a>
+          </div>
+        </form>
+      </div>
     </div>
-
-    <div class="mb-3">
-        {{ form.foto.label_tag }}
-        {{ form.foto }}
-        {% if form.foto.errors %}
-            <div class="text-danger">{{ form.foto.errors }}</div>
-        {% endif %}
-    </div>
-
-    <div class="mb-3">
-        {{ form.deskripsi.label_tag }}
-        {{ form.deskripsi }}
-        {% if form.deskripsi.errors %}
-            <div class="text-danger">{{ form.deskripsi.errors }}</div>
-        {% endif %}
-    </div>
-
-    <button type="submit" class="btn btn-success">Simpan</button>
-    <a href="{% url 'ppid:admin_pimpinan_list' %}" class="btn btn-secondary">Batal</a>
-</form>
+  </div>
+</div>
 {% endblock %}

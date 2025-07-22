@@ -243,3 +243,131 @@ div {
 .btn-success:hover {
   background-color: #146c43;
 }
+
+/* Sidebar style */
+  .sidebar {
+    background-color: #259148;
+    color: #FDC727;
+    width: 250px;
+    position: fixed;
+    height: 100vh;
+    padding: 1rem;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  }
+
+  .sidebar a {
+    color: #FDC727;
+    font-weight: 500;
+    transition: background 0.2s ease, transform 0.2s ease;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    display: block;
+  }
+
+  .sidebar a:hover {
+    background-color: rgba(253, 199, 39, 0.2);
+    transform: translateX(5px);
+    text-decoration: none;
+  }
+
+  .sidebar .navbar-brand {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    display: block;
+  }
+
+  .sidebar .btn-danger {
+    background-color: #dc3545;
+    border: none;
+  }
+
+  .main-content {
+    margin-left: 250px;
+    padding: 1rem;
+    transition: margin-left 0.3s ease-in-out;
+  }
+
+  /* Responsive optional */
+  @media (max-width: 768px) {
+    .sidebar {
+      position: absolute;
+      left: -250px;
+      z-index: 1000;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .main-content {
+      margin-left: 0;
+    }
+
+    .main-content.shifted {
+      margin-left: 250px;
+    }
+  }
+
+ body {
+    background-color: #f7f9f8;
+  }
+
+  .django-ckeditor-widget {
+    width: 100%;
+    min-height: 300px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 1rem;
+  }
+
+  .form-label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #259148;
+  }
+
+  .card-header {
+    background-color: #259148 !important;
+    color: #FDC727 !important;
+    border-bottom: 2px solid #FDC727;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+
+  .card {
+    border-radius: 1rem;
+    animation: fadeInUp 0.5s ease;
+  }
+
+  .btn-success {
+    background-color: #259148;
+    border: none;
+  }
+
+  .btn-success:hover {
+    background-color: #1f7f3d;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .table-hover tbody tr:hover {
+    background-color: #e8f5e9;
+  }
+  .btn-warning:hover {
+    background-color: #f1b44c;
+    border-color: #e0a800;
+  }
+  .btn-danger:hover {
+    background-color: #dc3545;
+    border-color: #bd2130;
+  }

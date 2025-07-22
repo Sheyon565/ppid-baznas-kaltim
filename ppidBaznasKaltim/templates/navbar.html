@@ -1,6 +1,8 @@
 {% load static %}
 <head>
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <!-- Bootstrap 5 JS Bundle (sudah termasuk Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-FoP7Kk0QzN1Lrf+DJ59x9CF2bz2Y+5g8lP43wTxx3u8Pg9epFYXOvLu7PZQOaNYX" crossorigin="anonymous"></script>
 </head>
 <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm fixed-top">
     <div class="container">
@@ -33,29 +35,44 @@
 
     <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle fw-semibold"href="#"id="layananDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Layanan Informasi
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="layananDropdown">
-            <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="#">Formulir</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Permohonan Informasi Publik</a></li>
-                <li><a class="dropdown-item" href="#">Pengajuan Keberatan</a></li>
-                <li><a class="dropdown-item" href="#">Permohonan kunjungan</a></li>
-                <li><a class="dropdown-item" href="#">Penilaian Layanan</a></li>
-                <li><a class="dropdown-item" href="#">Formulir Pengaduan</a>
-                </li>
-              </ul>
-            </li>
-            <li><a class="dropdown-item" href="{% url 'ppid:layanan_pengaduan' %}">Layanan Pengaduan</a></li>
-            <li><a class="dropdown-item" href="{% url 'ppid:maklumat_pelayanan' %}">Maklumat Pelayanan</a></li>
-            <li><a class="dropdown-item" href="{% url 'ppid:rekomendasi_laz' %}">Rekomendasi Laz</a></li>
-            <li><a class="dropdown-item" href="https://kaltim.baznas.go.id/konfirmasi-zis">Konfirmasi ZIS</a></li>
-            <li><a class="dropdown-item" href="https://kaltim.baznas.go.id/kalkulator-zakat">Kalkulator Zakat</a></li>
-            <li><a class="dropdown-item" href="https://kaltim.baznas.go.id/rekening">Info Rekening Zakat</a></li>
-          </ul>
-        </li>
+  <a class="nav-link dropdown-toggle fw-semibold"
+     href="#"
+     id="layananDropdown"
+     role="button"
+     data-bs-toggle="dropdown"
+     aria-expanded="false">
+    Layanan Informasi
+  </a>
+
+  <ul class="dropdown-menu" aria-labelledby="layananDropdown">
+    
+    <!-- Submenu: Formulir -->
+    <li class="dropdown-submenu position-relative">
+      <a class="dropdown-item dropdown-toggle"
+         href="#"
+         id="formulirDropdown"
+         role="button">
+        Formulir
+      </a>
+      <ul class="dropdown-menu shadow" aria-labelledby="formulirDropdown">
+        <li><a class="dropdown-item" href="#">Permohonan Informasi Publik</a></li>
+        <li><a class="dropdown-item" href="#">Pengajuan Keberatan</a></li>
+        <li><a class="dropdown-item" href="#">Permohonan Kunjungan</a></li>
+        <li><a class="dropdown-item" href="#">Penilaian Layanan</a></li>
+        <li><a class="dropdown-item" href="#">Formulir Pengaduan</a></li>
+      </ul>
+    </li>
+
+    <!-- Menu lainnya -->
+    <li><a class="dropdown-item" href="{% url 'ppid:layanan_pengaduan' %}">Layanan Pengaduan</a></li>
+    <li><a class="dropdown-item" href="{% url 'ppid:maklumat_pelayanan' %}">Maklumat Pelayanan</a></li>
+    <li><a class="dropdown-item" href="{% url 'ppid:rekomendasi_laz' %}">Rekomendasi Laz</a></li>
+    <li><a class="dropdown-item" href="https://kaltim.baznas.go.id/konfirmasi-zis">Konfirmasi ZIS</a></li>
+    <li><a class="dropdown-item" href="https://kaltim.baznas.go.id/kalkulator-zakat">Kalkulator Zakat</a></li>
+    <li><a class="dropdown-item" href="https://kaltim.baznas.go.id/rekening">Info Rekening Zakat</a></li>
+  </ul>
+</li>
+
 
                 <!-- Informasi Publik Dropdown -->
                 <li class="nav-item dropdown">
@@ -104,4 +121,41 @@
             </ul>
         </div>
     </div>
+{% block js %}
+<script>
+  // Submenu toggle click handler
+  document.addEventListener("DOMContentLoaded", function () {
+    var dropdownSubmenus = document.querySelectorAll(".dropdown-submenu > a");
+
+    dropdownSubmenus.forEach(function (element) {
+      element.addEventListener("click", function (e) {
+        let nextEl = this.nextElementSibling;
+
+        if (nextEl && nextEl.classList.contains("dropdown-menu")) {
+          e.preventDefault();
+          nextEl.classList.toggle("show");
+
+          // Close other open submenus in the same parent
+          let parentMenu = this.closest(".dropdown-menu");
+          let otherMenus = parentMenu.querySelectorAll(".dropdown-menu.show");
+          otherMenus.forEach(function (menu) {
+            if (menu !== nextEl) {
+              menu.classList.remove("show");
+            }
+          });
+        }
+      });
+    });
+
+    // Close submenu when clicking outside
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest(".dropdown-menu")) {
+        document.querySelectorAll(".dropdown-menu.show").forEach(function (submenu) {
+          submenu.classList.remove("show");
+        });
+      }
+    });
+  });
+</script>
+{% endblock %}
 </nav>
