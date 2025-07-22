@@ -54,7 +54,7 @@ def is_admin(user):
 
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect('ppid:admin_dashboard') 
+        return redirect('ppid:admin_dashboard')
 
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -63,15 +63,16 @@ def login_view(request):
         if username and password:
             user = authenticate(request, username=username, password=password)
 
-            if user is not None and (user.is_staff or user.groups.filter(name='Operator').exists()):
+            if user is not None:
                 login(request, user)
-                return redirect('ppid:admin_dashboard')
+                return redirect('ppid:admin_dashboard')  # atau redirect berbeda jika bukan admin
             else:
                 messages.error(request, 'Username atau password salah atau Anda tidak punya akses.')
         else:
             messages.error(request, 'Mohon isi username dan password.')
 
     return render(request, 'admin/admin_login.html')
+
 
 
 @login_required
@@ -217,7 +218,7 @@ def admin_artikel_list(request):
     artikel = ArtikelBaznas.objects.all()
     return render(request, "admin/artikel_list.html", {"artikel": artikel})
 
-@login_required(login_url='/auth-login')
+@login_required
 def admin_artikel_tambah(request):
     if request.method == "POST":
         forms = ArtikelForms(request.POST, request.FILES)
@@ -231,7 +232,7 @@ def admin_artikel_tambah(request):
         forms = ArtikelForms()
     return render(request, "admin/artikel_form.html", {"form": forms})
 
-@login_required(login_url='/auth-login')
+@login_required
 def admin_artikel_update(request, id_artikel):
     artikel = get_object_or_404(ArtikelBaznas, id=id_artikel)
     if request.method == "POST":
@@ -262,7 +263,7 @@ def admin_pimpinan_list(request):
     pimpinan = Pimpinan.objects.all()
     return render(request, "admin/pimpinan_list.html", {"pimpinan": pimpinan})
 
-@login_required(login_url='/auth-login')
+@login_required
 def admin_pimpinan_tambah(request):
     if request.method == "POST":
         forms = PimpinanForm(request.POST, request.FILES)
@@ -274,7 +275,7 @@ def admin_pimpinan_tambah(request):
         forms = PimpinanForm()
     return render(request, "admin/pimpinan_forms.html", {"form": forms})
 
-@login_required(login_url='/auth-login')
+@login_required
 def admin_pimpinan_update(request, id_pimpinan):
     pimpinan = get_object_or_404(Pimpinan, id=id_pimpinan)
     if request.method == "POST":
@@ -287,7 +288,7 @@ def admin_pimpinan_update(request, id_pimpinan):
         form = PimpinanForm(instance=pimpinan)
     return render(request, "admin/pimpinan_forms.html", {"form": form})
 
-@login_required(login_url='/auth-login')
+@login_required
 def admin_pimpinan_delete(request, id_pimpinan):
     pimpinan = get_object_or_404(Pimpinan, id=id_pimpinan)
     try:
