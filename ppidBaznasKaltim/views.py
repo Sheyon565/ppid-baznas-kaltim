@@ -40,7 +40,7 @@ def edit_akun(request):
             password = form.cleaned_data.get('password')
             if password:
                 user.set_password(password)
-                update_session_auth_hash(request, user)  # Penting agar user tidak logout
+                update_session_auth_hash(request, user)  # agar tidak logout
             user.save()
             return redirect('ppid:user_list')
     else:

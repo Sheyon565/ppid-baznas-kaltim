@@ -2,6 +2,9 @@ from django import forms
 from django_ckeditor_5.widgets import CKEditor5Widget
 from .models import ArtikelBaznas, Pimpinan, User
 from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
     
 class ArtikelForms(forms.ModelForm):
     class Meta:
@@ -55,17 +58,14 @@ class PimpinanForm(forms.ModelForm):
             'deskripsi': CKEditor5Widget(config_name='extends'),
         }
 
-class CustomUserChangeForm(forms.ModelForm):
+class CustomUserChangeForm(UserChangeForm):
     password = forms.CharField(
-        label="Ganti Password",
-        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
-        required=False
+        required=False,
+        label="Password Baru",
+        widget=forms.PasswordInput,
+        help_text="Kosongkan jika tidak ingin mengganti password."
     )
 
     class Meta:
         model = User
-        fields = ('username', 'email')
-        widgets = {
-            'username': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-        }
+        fields = ['username', 'email', 'first_name', 'password']
