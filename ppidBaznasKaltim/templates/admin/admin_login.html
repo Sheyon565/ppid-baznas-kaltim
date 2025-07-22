@@ -56,13 +56,6 @@
     <img src="{% static 'img/logobaznas.png' %}" alt="Logo BAZNAS Kaltim">
     <h4>Admin PPID<br>BAZNAS Kalimantan Timur</h4>
   </div>
-
-  {% if messages %}
-    {% for message in messages %}
-      <div class="alert alert-danger">{{ message }}</div>
-    {% endfor %}
-  {% endif %}
-
   <form method="POST" action="{% url 'ppid:login' %}">
     {% csrf_token %}
     <div class="mb-3">
