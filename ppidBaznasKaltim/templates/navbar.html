@@ -2,21 +2,6 @@
 
 <head>
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
-  {% block css %}
-  <style>
-    .dropdown-submenu>.dropdown-menu {
-      top: 0;
-      left: 100%;
-      margin-top: -0.1rem;
-      display: none;
-    }
-
-    .dropdown-submenu.show>.dropdown-menu {
-      display: block;
-      position: absolute;
-    }
-  </style>
-  {% endblock %}
 </head>
 <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm fixed-top">
   <div class="container">
@@ -57,7 +42,7 @@
             <ul class="dropdown-menu" aria-labelledby="layananDropdown">
 
               <!-- Submenu: Formulir -->
-              <li class="dropdown-submenu dropdown position-relative">
+              <li class="dropdown position-relative">
                 <a class="dropdown-item dropdown-toggle" href="#" id="formulirDropdown" role="button">
                   Formulir
                 </a>
@@ -159,32 +144,5 @@
 
     navBarList.addEventListener("hidden.bs.collapse", () => isShown = false)
   });
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const submenuTrigger = document.getElementById("formulirDropdown");
-    const submenu = submenuTrigger.nextElementSibling;
-
-    submenuTrigger.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      document.querySelectorAll('.dropdown-submenu .dropdown-menu.show').forEach(el => {
-        if (el !== submenu) el.classList.remove("show");
-      });
-
-      submenu.classList.toggle("show");
-    });
-
-    submenu.addEventListener("click", function (e) {
-      e.stopPropagation();
-    })
-
-    document.addEventListener("click", function (e) {
-      if (!submenu.contains(e.target) && !submenuTrigger.contains(e.target)) {
-        submenu.classList.remove("show");
-      }
-    })
-  })
 </script>
 {% endblock %}
