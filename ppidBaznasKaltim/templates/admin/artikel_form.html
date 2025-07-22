@@ -29,7 +29,7 @@
         <h5 class="mb-0">Form Tambah Artikel</h5>
       </div>
       <div class="card-body p-4">
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data" novalidate>
           {% csrf_token %}
           {{ form.non_field_errors }}
 

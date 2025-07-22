@@ -21,26 +21,19 @@ class ArtikelForms(forms.ModelForm):
                 }
             ),
             'konten': CKEditor5Widget(config_name='extends'),
-            # Opsional: Menambahkan widget untuk 'gambar' dan 'status'
-            # Jika 'gambar' adalah ImageField atau FileField
+        
             'gambar': forms.ClearableFileInput(
                 attrs={
                     'class': 'form-control-file', # Bootstrap 5 class for file inputs
                     'accept': 'image/*', # Opsional: Batasi hanya file gambar
                 }
             ),
-            # Jika 'status' adalah CharField dengan choices atau BooleanField
-            'status': forms.Select( # Contoh jika status adalah CharField dengan choices
+            'status': forms.CheckboxInput(
                 attrs={
-                    'class': 'form-control',
-                }
-            )
-            # Atau jika 'status' adalah BooleanField
-            # 'status': forms.CheckboxInput(
-            #     attrs={
-            #         'class': 'form-check-input',
-            #     }
-            # )
+                    'class': 'form-check-input'
+                    }
+                ),
+
         }
 
 class PimpinanForm(forms.ModelForm):

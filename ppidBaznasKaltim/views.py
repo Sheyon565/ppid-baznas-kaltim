@@ -107,10 +107,10 @@ def artikel_create(request):
             artikel = form.save(commit=False)
             artikel.created_by = request.user
             artikel.save()
-            return redirect('artikel_list')  # Sesuaikan dengan nama URL kamu
+            return redirect('ppid:admin_artikel_list')  # Sesuaikan dengan nama URL kamu
     else:
         form = ArtikelForms()
-    return render(request, 'Artikel/artikel_form.html', {'form': form})
+    return render(request, 'admin/artikel_form.html', {'form': form})
 
 class HomeView(TemplateView):
     template_name = 'index.html'
