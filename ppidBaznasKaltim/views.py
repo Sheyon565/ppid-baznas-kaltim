@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import ArtikelBaznas, Pimpinan
-from .forms import ArtikelForms, PimpinanForm  # Pastikan file forms.py punya ArtikelForms
+from .forms import ArtikelForms, PimpinanForm
 
 ### User ###
 def user_list(request):
@@ -19,7 +19,7 @@ def user_create(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('user_list')
+            return redirect('ppid:user_list')
     else:
         form = UserCreationForm()
     return render(request, 'user_form.html', {'form': form})
@@ -30,7 +30,7 @@ def is_admin(user):
 
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect('ppid:admin_dashboard')  # sesuaikan dengan URL dashboard kamu
+        return redirect('ppid:admin_dashboard') 
 
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -64,18 +64,14 @@ def logout_view(request):
     logout(request)
     return redirect('ppid:login')
 
-
-# ✅ List artikel yang sudah publish
 def artikel_list(request):
     artikels = ArtikelBaznas.objects.filter(status=True).order_by('-created_at')
     return render(request, 'Artikel/artikel_list.html', {'artikels': artikels})
 
-# ✅ Detail artikel
 def artikel_detail(request, pk):
     artikel = get_object_or_404(ArtikelBaznas, pk=pk, status=True)
     return render(request, 'Artikel/artikel_detail.html', {'artikel': artikel})
 
-# ✅ Form tambah artikel (hanya untuk user login)
 @login_required
 def artikel_create(request):
     if request.method == 'POST':
@@ -89,7 +85,6 @@ def artikel_create(request):
         form = ArtikelForms()
     return render(request, 'Artikel/artikel_form.html', {'form': form})
 
-# ✅ Home page
 class HomeView(TemplateView):
     template_name = 'index.html'
 
