@@ -6,15 +6,6 @@
 {{ form.media }}
 <h1 class="mb-4">{{ title }} Pimpinan</h1>
 
-<form method="post" enctype="multipart/form-data" class="mb-4">
-    {% csrf_token %}
-    <div class="mb-3">
-        {{ form.nama.label_tag }}
-        {{ form.nama }}
-        {% if form.nama.errors %}
-        <div class="text-danger">{{ form.nama.errors }}</div>
-        {% endif %}
-    </div>
 <div class="row mt-5">
   <div class="col-lg-8 col-md-10 mx-auto">
     <div class="card shadow border-0 rounded-4">
@@ -26,44 +17,34 @@
         <form method="post" enctype="multipart/form-data">
           {% csrf_token %}
 
+          <!-- Nama Pimpinan -->
           <div class="mb-4">
-            <label class="form-label fw-semibold">Nama Pimpinan</label>
+            <label class="form-label fw-semibold">{{ form.nama.label }}</label>
             {{ form.nama|add_class:"form-control" }}
             {% if form.nama.errors %}
               <small class="text-danger">{{ form.nama.errors }}</small>
             {% endif %}
           </div>
 
-    <div class="mb-3">
-        {{ form.foto.label_tag }}
-        {{ form.foto }}
-        {% if form.foto.errors %}
-        <div class="text-danger">{{ form.foto.errors }}</div>
-        {% endif %}
-    </div>
+          <!-- Foto Pimpinan -->
           <div class="mb-4">
-            <label class="form-label fw-semibold">Foto Pimpinan</label>
-            {{ form.foto|add_class:"form-control" }}
+            <label class="form-label fw-semibold">{{ form.foto.label }}</label>
+            {{ form.foto }}
             {% if form.foto.errors %}
               <small class="text-danger">{{ form.foto.errors }}</small>
             {% endif %}
           </div>
 
-    <div class="mb-3">
-        {{ form.deskripsi.label_tag }}
-        {{ form.deskripsi }}
-        {% if form.deskripsi.errors %}
-        <div class="text-danger">{{ form.deskripsi.errors }}</div>
-        {% endif %}
-    </div>
+          <!-- Deskripsi -->
           <div class="mb-4">
-            <label class="form-label fw-semibold">Deskripsi</label>
-            {{ form.deskripsi }}
+            <label class="form-label fw-semibold">{{ form.deskripsi.label }}</label>
+            {{ form.deskripsi|add_class:"form-control" }}
             {% if form.deskripsi.errors %}
               <small class="text-danger">{{ form.deskripsi.errors }}</small>
             {% endif %}
           </div>
 
+          <!-- Tombol Simpan dan Batal -->
           <div class="text-end">
             <button type="submit" class="btn btn-success px-4">
               <i class="bi bi-save me-1"></i> Simpan
@@ -72,6 +53,7 @@
               <i class="bi bi-x-circle me-1"></i> Batal
             </a>
           </div>
+
         </form>
       </div>
     </div>
