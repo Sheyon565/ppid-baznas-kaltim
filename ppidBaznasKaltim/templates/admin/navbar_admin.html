@@ -4,23 +4,29 @@
 <div class="d-flex">
   <!-- Sidebar -->
   <nav id="sidebar" class="sidebar">
-    <a class="navbar-brand text-white" href="{% url 'ppid:admin_dashboard' %}"> Admin PPID  </a>
-    <ul class="nav flex-column">
-      <li class="nav-item mb-2">
-        <a class="nav-link text-white" href="{% url 'ppid:admin_artikel_list' %}">
-          📰 Kelola Artikel
-        </a>
-      </li>
-      <li class="nav-item mb-2">
-        <a class="nav-link text-white" href="{% url 'ppid:admin_pimpinan_list' %}">
-          👤 Kelola Pimpinan
-        </a>
-      </li>
-      <li class="nav-item mt-4">
-        <a href="{% url 'ppid:logout' %}" class="btn btn-danger text-white w-100">Logout</a>
-      </li>
-    </ul>
-  </nav>
+  <a class="navbar-brand text-white" href="{% url 'ppid:admin_dashboard' %}"> Admin PPID </a>
+  <ul class="nav flex-column">
+    <li class="nav-item mb-2">
+      <a class="nav-link text-white" href="{% url 'ppid:admin_artikel_list' %}">
+        📰 Kelola Artikel
+      </a>
+    </li>
+    <li class="nav-item mb-2">
+      <a class="nav-link text-white" href="{% url 'ppid:admin_pimpinan_list' %}">
+        👤 Kelola Pimpinan
+      </a>
+    </li>
+    <li class="nav-item mb-2">
+      <a class="nav-link text-white" href="{% url 'ppid:user_list' %}">
+        👥 Kelola User
+      </a>
+    </li>
+    <li class="nav-item mt-4">
+      <a href="{% url 'ppid:logout' %}" class="btn btn-danger text-white w-100">Logout</a>
+    </li>
+  </ul>
+</nav>
+
 
   <!-- Main Content -->
   <div id="main-content" class="main-content flex-grow-1">

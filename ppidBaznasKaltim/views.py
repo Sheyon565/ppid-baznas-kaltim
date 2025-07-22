@@ -3,9 +3,26 @@ from django.views.generic import TemplateView, CreateView
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 from .models import ArtikelBaznas, Pimpinan
 from .forms import ArtikelForms, PimpinanForm  # Pastikan file forms.py punya ArtikelForms
 
+### User ###
+def user_list(request):
+    users = User.objects.all()
+    return render(request, 'user_list.html', {'users': users})
+
+# Tambah user
+def user_create(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('user_list')
+    else:
+        form = UserCreationForm()
+    return render(request, 'user_form.html', {'form': form})
 
 #### Admin ####
 def is_admin(user):
