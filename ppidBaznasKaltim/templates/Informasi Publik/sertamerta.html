@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-4">Informasi Serta Merta</h2>
+
+    <div class="alert alert-warning text-center" role="alert">
+      <i class="bi bi-exclamation-triangle-fill me-2"></i> Belum ada data yang tersedia untuk ditampilkan.
+    </div>
+
+    <!-- Jika nanti ingin ditambahkan gambar ilustrasi kosong -->
+    <!--
+    <div class="text-center mt-4">
+      <img src="{% static 'images/no-data.png' %}" alt="Belum Ada Data" style="max-width: 300px;">
+    </div>
+    -->
+  </div>
+</section>
+{% endblock %}

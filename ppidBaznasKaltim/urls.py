@@ -33,6 +33,7 @@ urlpatterns = [
     
     ##PPID##
     path('profil/', views.profil_view, name='profil'),
+     path('struktur-ppid/', views.struktur_ppid, name='struktur_ppid'),
     path('pimpinan/tambah/', views.tambah_pimpinan, name='tambah_pimpinan'),
     path('pimpinan/edit/<int:id>/', views.edit_pimpinan, name='edit_pimpinan'),
     path('visi-misi/', views.visi_misi_view, name='visi_misi'),
@@ -56,4 +57,5 @@ urlpatterns = [
     
     ### Regulasi ###
     path('informasi-publik/', views.layanan_informasi, name='informasi_publik'),
+    path('upz/', views.lupz, name='upz'),
 ]

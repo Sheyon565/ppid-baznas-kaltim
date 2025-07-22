@@ -26,6 +26,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{% url 'ppid:profil' %}">Profil</a></li>
+            <li><a class="dropdown-item" href="{% url 'ppid:struktur_ppid' %}">Struktur PPID</a></li>
             <li><a class="dropdown-item" href="{% url 'ppid:visi_misi' %}">Visi Misi</a></li>
             <li><a class="dropdown-item" href="{% url 'ppid:tugas_fungsi' %}">Tugas Dan Fungsi</a></li>
             <li><a class="dropdown-item" href="https://kaltim.baznas.go.id/event">Pendaftaran Event</a></li>
@@ -43,7 +44,7 @@
 
               <!-- Submenu: Formulir -->
               <li class="dropdown position-relative">
-                <a class="dropdown-item dropdown-toggle" href="#" id="formulirDropdown" role="button">
+                <a class="dropdown-item dropdown-toggle" href="#" id="formulirDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Formulir
                 </a>
                 <ul class="dropdown-menu shadow" aria-labelledby="formulirDropdown">
@@ -93,7 +94,7 @@
               <li><a class="dropdown-item" href="https://ppid.baznas.go.id/regulasi/regulasi-baznas-daerah">Regulasi
                   BAZNAS Daerah</a></li>
               <li><a class="dropdown-item" href="https://ppid.baznas.go.id/regulasi/regulasi-laz">Regulasi LAZ</a></li>
-              <li><a class="dropdown-item" href="#">Regulasi UPZ</a></li>
+              <li><a class="dropdown-item" href="{% url 'ppid:upz' %}">Regulasi UPZ</a></li>
               <li><a class="dropdown-item" href="https://ppid.baznas.go.id/regulasi/hubungan-zakat-dan-pajak">Regulasi
                   Hubungan Zakat dan Pajak</a></li>
               <li><a class="dropdown-item" href="https://ppid.baznas.go.id/regulasi/fatwa-mui">Fatwa MUI</a></li>
@@ -122,6 +123,7 @@
 
 {% block js %}
 <script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   document.addEventListener("DOMContentLoaded", function () {
     const navButton = document.getElementById("navToggle");
     const navBarList = document.getElementById("navbarNav");

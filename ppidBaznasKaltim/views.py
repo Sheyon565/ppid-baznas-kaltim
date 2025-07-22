@@ -143,6 +143,9 @@ class HomeView(TemplateView):
             }
         })
         return context
+    
+def struktur_ppid(request):
+    return render(request, 'PPID/struktur_ppid.html')
 
 # ✅ Halaman regulasi (statis)
 def regulasi(request):
@@ -223,6 +226,9 @@ def informasi_setiap_saat(request):
 #### Regulasi ####
 def layanan_informasi(request):
     return render(request, 'Regulasi/layanan_informasi.html')
+
+def upz(request):
+    return render(request, 'Regulasi/upz.html')
 
 # === ARTIKEL ===
 @login_required
