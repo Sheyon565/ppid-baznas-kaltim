@@ -57,5 +57,5 @@ urlpatterns = [
     
     ### Regulasi ###
     path('informasi-publik/', views.layanan_informasi, name='informasi_publik'),
-    path('upz/', views.lupz, name='upz'),
+    path('upz/', views.upz, name='upz'),
 ]
