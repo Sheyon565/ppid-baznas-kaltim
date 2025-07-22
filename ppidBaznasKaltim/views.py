@@ -95,9 +95,21 @@ def artikel_list(request):
     artikels = ArtikelBaznas.objects.filter(status=True).order_by('-created_at')[:3]
     return render(request, 'Artikel/artikel_list.html', {'artikels': artikels})
 
-def artikel_detail(request, pk):
+def detail_artikel(request, pk):
+    template_name = "Artikel/detail_artikel.html"
+
+    # Ambil artikel utama, pastikan hanya yang status=True
     artikel = get_object_or_404(ArtikelBaznas, pk=pk, status=True)
-    return render(request, 'Artikel/detail_artikel.html', {'artikel': artikel})
+
+    # Ambil artikel lainnya (kecuali artikel ini)
+    artikel_lainnya = ArtikelBaznas.objects.filter(status=True).exclude(pk=pk)
+
+    context = {
+        "title": "Detail Artikel",
+        "artikel": artikel,
+        "artikel_lainnya": artikel_lainnya
+    }
+    return render(request, template_name, context)
 
 @login_required
 def artikel_create(request):
@@ -119,7 +131,7 @@ class HomeView(TemplateView):
         context = super().get_context_data(**kwargs)
         
         # Ambil artikel yang sudah publish
-        artikels = ArtikelBaznas.objects.filter(status=True).order_by('-created_at')[:5]
+        artikels = ArtikelBaznas.objects.filter(status=True).order_by('-created_at')[:3]
 
         context.update({
             'title': 'PPID Baznas Kaltim',
