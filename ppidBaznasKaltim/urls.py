@@ -13,7 +13,7 @@ urlpatterns = [
     path('admin-logout/', views.logout_view, name='logout'),
     
     path('artikel/', views.artikel_list, name='artikel_list'),
-    path('artikel/<int:pk>/', views.artikel_detail, name='artikel_detail'),
+    path('artikel/<int:pk>/', views.artikel_create, name='artikel_detail'),
     path('artikel/tambah/', views.artikel_create, name='artikel_create'),
      # ArtikelBaznas
     path('admin-artikel/', views.admin_artikel_list, name='admin_artikel_list'),
