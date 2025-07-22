@@ -213,13 +213,11 @@ def layanan_informasi(request):
 
 # === ARTIKEL ===
 @login_required
-@user_passes_test(is_admin, login_url='/')
 def admin_artikel_list(request):
     artikel = ArtikelBaznas.objects.all()
     return render(request, "admin/artikel_list.html", {"artikel": artikel})
 
 @login_required(login_url='/auth-login')
-@user_passes_test(is_admin, login_url='/')
 def admin_artikel_tambah(request):
     if request.method == "POST":
         forms = ArtikelForms(request.POST, request.FILES)
@@ -234,7 +232,6 @@ def admin_artikel_tambah(request):
     return render(request, "admin/artikel_form.html", {"form": forms})
 
 @login_required(login_url='/auth-login')
-@user_passes_test(is_admin, login_url='/')
 def admin_artikel_update(request, id_artikel):
     artikel = get_object_or_404(ArtikelBaznas, id=id_artikel)
     if request.method == "POST":
@@ -250,7 +247,6 @@ def admin_artikel_update(request, id_artikel):
     return render(request, "admin/artikel_form.html", {"form": form})
 
 @login_required
-@user_passes_test(is_admin, login_url='/')
 def admin_artikel_delete(request, id_artikel):
     artikel = get_object_or_404(ArtikelBaznas, id=id_artikel)
     try:
@@ -262,13 +258,11 @@ def admin_artikel_delete(request, id_artikel):
 
 # === PIMPINAN ===
 @login_required
-@user_passes_test(is_admin, login_url='/')
 def admin_pimpinan_list(request):
     pimpinan = Pimpinan.objects.all()
     return render(request, "admin/pimpinan_list.html", {"pimpinan": pimpinan})
 
 @login_required(login_url='/auth-login')
-@user_passes_test(is_admin, login_url='/')
 def admin_pimpinan_tambah(request):
     if request.method == "POST":
         forms = PimpinanForm(request.POST, request.FILES)
@@ -281,7 +275,6 @@ def admin_pimpinan_tambah(request):
     return render(request, "admin/pimpinan_forms.html", {"form": forms})
 
 @login_required(login_url='/auth-login')
-@user_passes_test(is_admin, login_url='/')
 def admin_pimpinan_update(request, id_pimpinan):
     pimpinan = get_object_or_404(Pimpinan, id=id_pimpinan)
     if request.method == "POST":
@@ -295,7 +288,6 @@ def admin_pimpinan_update(request, id_pimpinan):
     return render(request, "admin/pimpinan_forms.html", {"form": form})
 
 @login_required(login_url='/auth-login')
-@user_passes_test(is_admin, login_url='/')
 def admin_pimpinan_delete(request, id_pimpinan):
     pimpinan = get_object_or_404(Pimpinan, id=id_pimpinan)
     try:
