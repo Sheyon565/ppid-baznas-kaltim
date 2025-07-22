@@ -1,8 +1,9 @@
 {% load static %}
 <head>
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<body> {# Ensure you have a body tag, typically in your base template #}
+
 <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm fixed-top">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="{% url 'ppid:home' %}">
@@ -14,13 +15,12 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
             aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav gap-2">
 
-                <!-- PPID Baznas Kaltim -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle fw-semibold" href="#" role="button" data-bs-toggle="dropdown">
                         PPID Baznas Kaltim
@@ -33,48 +33,42 @@
                     </ul>
                 </li>
 
-    <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle fw-semibold"
-     href="#"
-     id="layananDropdown"
-     role="button"
-     data-bs-toggle="dropdown"
-     aria-expanded="false">
-    Layanan Informasi
-  </a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fw-semibold"
+                       href="#"
+                       id="layananDropdown"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Layanan Informasi
+                    </a>
 
-  <ul class="dropdown-menu" aria-labelledby="layananDropdown">
-    
-    <!-- Submenu: Formulir -->
-    <li class="dropdown-submenu position-relative">
-      <a class="dropdown-item dropdown-toggle"
-         href="#"
-         id="formulirDropdown"
-         role="button">
-        Formulir
-      </a>
-      <ul class="dropdown-menu shadow" aria-labelledby="formulirDropdown">
-        <li><a class="dropdown-item" href="#">Permohonan Informasi Publik</a></li>
-        <li><a class="dropdown-item" href="#">Pengajuan Keberatan</a></li>
-        <li><a class="dropdown-item" href="#">Permohonan Kunjungan</a></li>
-        <li><a class="dropdown-item" href="#">Penilaian Layanan</a></li>
-        <li><a class="dropdown-item" href="#">Formulir Pengaduan</a></li>
-      </ul>
-    </li>
+                    <ul class="dropdown-menu" aria-labelledby="layananDropdown">
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle"
+                               href="#"
+                               id="formulirDropdown"
+                               role="button">
+                                Formulir
+                            </a>
+                            <ul class="dropdown-menu shadow" aria-labelledby="formulirDropdown">
+                                <li><a class="dropdown-item" href="#">Permohonan Informasi Publik</a></li>
+                                <li><a class="dropdown-item" href="#">Pengajuan Keberatan</a></li>
+                                <li><a class="dropdown-item" href="#">Permohonan Kunjungan</a></li>
+                                <li><a class="dropdown-item" href="#">Penilaian Layanan</a></li>
+                                <li><a class="dropdown-item" href="#">Formulir Pengaduan</a></li>
+                            </ul>
+                        </li>
 
-    <!-- Menu lainnya -->
-    <li><a class="dropdown-item" href="{% url 'ppid:layanan_pengaduan' %}">Layanan Pengaduan</a></li>
-    <li><a class="dropdown-item" href="{% url 'ppid:maklumat_pelayanan' %}">Maklumat Pelayanan</a></li>
-    <li><a class="dropdown-item" href="{% url 'ppid:rekomendasi_laz' %}">Rekomendasi Laz</a></li>
-    <li><a class="dropdown-item" href="https://kaltim.baznas.go.id/konfirmasi-zis">Konfirmasi ZIS</a></li>
-    <li><a class="dropdown-item" href="https://kaltim.baznas.go.id/kalkulator-zakat">Kalkulator Zakat</a></li>
-    <li><a class="dropdown-item" href="https://kaltim.baznas.go.id/rekening">Info Rekening Zakat</a></li>
-  </ul>
-</li>
+                        <li><a class="dropdown-item" href="{% url 'ppid:layanan_pengaduan' %}">Layanan Pengaduan</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ppid:maklumat_pelayanan' %}">Maklumat Pelayanan</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ppid:rekomendasi_laz' %}">Rekomendasi Laz</a></li>
+                        <li><a class="dropdown-item" href="https://kaltim.baznas.go.id/konfirmasi-zis">Konfirmasi ZIS</a></li>
+                        <li><a class="dropdown-item" href="https://kaltim.baznas.go.id/kalkulator-zakat">Kalkulator Zakat</a></li>
+                        <li><a class="dropdown-item" href="https://kaltim.baznas.go.id/rekening">Info Rekening Zakat</a></li>
+                    </ul>
+                </li>
 
-
-                <!-- Informasi Publik Dropdown -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle fw-semibold" href="#" role="button" data-bs-toggle="dropdown">
                         Informasi Publik
@@ -86,7 +80,6 @@
                     </ul>
                 </li>
 
-                <!-- Regulasi -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle fw-semibold" href="#" role="button" data-bs-toggle="dropdown">
                         Regulasi
@@ -103,7 +96,6 @@
                     </ul>
                 </li>
 
-                <!-- Laporan Dropdown -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle fw-semibold" href="#" role="button" data-bs-toggle="dropdown">
                         Laporan
@@ -113,7 +105,6 @@
                     </ul>
                 </li>
 
-                <!-- FAQ -->
                 <li class="nav-item">
                     <a class="nav-link fw-semibold" href="{% url 'ppid:faq' %}">FAQ</a>
                 </li>
@@ -121,5 +112,9 @@
             </ul>
         </div>
     </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </nav>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-FoP7Kk0QzN1Lrf+DJ59x9CF2bz2Y+5g8lP43wTxx3u8Pg9epFYXOvLu7PZQOaNYX" crossorigin="anonymous"></script>
+
+</body> {# Closing body tag #}
+</html> {# Closing html tag, typically in your base template #}
