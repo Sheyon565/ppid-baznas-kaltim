@@ -53,7 +53,7 @@
 
           <div class="mb-4">
             <label class="form-label">Status</label>
-            {{ form.status }}
+            {{ form.status|add_class:"form-check-input" }}
             <small class="text-danger">{{ form.status.errors }}</small>
           </div>
 

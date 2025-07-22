@@ -5,15 +5,23 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserChangeForm
 from .models import ArtikelBaznas, Pimpinan
 from .forms import ArtikelForms, PimpinanForm
 
+def is_admin_or_operator(user):
+    return user.is_superuser or user.groups.filter(name='Operator').exists()
+
 ### User ###
+@login_required
+@user_passes_test(is_admin_or_operator)
 def user_list(request):
     users = User.objects.all()
     return render(request, 'admin/user_list.html', {'users': users})
 
 # Tambah user
+@login_required
+@user_passes_test(is_admin_or_operator)
 def user_create(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -23,6 +31,17 @@ def user_create(request):
     else:
         form = UserCreationForm()
     return render(request, 'admin/user_form.html', {'form': form})
+
+@login_required
+def edit_akun(request):
+    if request.method == 'POST':
+        form = UserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('ppid:user_list')  # Atau ke dashboard admin
+    else:
+        form = UserChangeForm(instance=request.user)
+    return render(request, 'admin/edit_akun.html', {'form': form})
 
 #### Admin ####
 def is_admin(user):
