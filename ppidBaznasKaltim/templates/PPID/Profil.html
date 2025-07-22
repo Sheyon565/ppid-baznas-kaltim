@@ -18,10 +18,15 @@
     <div class="card p-4 shadow border-0">
       <div class="card-body">
         <p class="text-justify">
-          Badan Amil Zakat Nasional Provinsi Kalimantan Timur (BAZNAS Kaltim) merupakan lembaga pemerintah non-struktural yang bersifat mandiri dan bertanggung jawab kepada BAZNAS Republik Indonesia (BAZNAS RI) sebagai bagian dari sistem pengelolaan zakat secara nasional berdasarkan Undang-Undang Nomor 23 Tahun 2011 tentang Pengelolaan Zakat.
+          Badan Amil Zakat Nasional Provinsi Kalimantan Timur (BAZNAS Kaltim) merupakan lembaga pemerintah
+          non-struktural yang bersifat mandiri dan bertanggung jawab kepada BAZNAS Republik Indonesia (BAZNAS RI)
+          sebagai bagian dari sistem pengelolaan zakat secara nasional berdasarkan Undang-Undang Nomor 23 Tahun 2011
+          tentang Pengelolaan Zakat.
         </p>
         <p>
-          Sebagai perpanjangan tangan dari BAZNAS RI di tingkat provinsi, BAZNAS Kaltim menjalankan tugas pengelolaan zakat, infak, dan sedekah (ZIS) serta dana sosial keagamaan lainnya di wilayah Kalimantan Timur. Pengelolaan tersebut mencakup fungsi:
+          Sebagai perpanjangan tangan dari BAZNAS RI di tingkat provinsi, BAZNAS Kaltim menjalankan tugas pengelolaan
+          zakat, infak, dan sedekah (ZIS) serta dana sosial keagamaan lainnya di wilayah Kalimantan Timur. Pengelolaan
+          tersebut mencakup fungsi:
         </p>
         <ul>
           <li>Perencanaan pengumpulan, pendistribusian, dan pendayagunaan zakat;</li>
@@ -32,10 +37,15 @@
 
         <h4 class="mt-5 fw-bold">Keterbukaan Informasi Publik</h4>
         <p>
-          Dalam pelaksanaan tugas dan fungsinya, BAZNAS Kaltim berkomitmen untuk mematuhi ketentuan peraturan perundang-undangan, termasuk Undang-Undang Nomor 14 Tahun 2008 tentang Keterbukaan Informasi Publik, yang menjamin hak masyarakat untuk memperoleh akses terhadap informasi publik.
+          Dalam pelaksanaan tugas dan fungsinya, BAZNAS Kaltim berkomitmen untuk mematuhi ketentuan peraturan
+          perundang-undangan, termasuk Undang-Undang Nomor 14 Tahun 2008 tentang Keterbukaan Informasi Publik, yang
+          menjamin hak masyarakat untuk memperoleh akses terhadap informasi publik.
         </p>
         <p>
-          Sebagai bentuk implementasi dari keterbukaan informasi dan untuk mewujudkan tata kelola lembaga yang baik, transparan, efektif, efisien, akuntabel, serta dapat dipertanggungjawabkan, BAZNAS Kaltim membentuk Pejabat Pengelola Informasi dan Dokumentasi (PPID) berdasarkan Keputusan Ketua BAZNAS Nomor 042 Tahun 2022 tentang Penetapan PPID BAZNAS.
+          Sebagai bentuk implementasi dari keterbukaan informasi dan untuk mewujudkan tata kelola lembaga yang baik,
+          transparan, efektif, efisien, akuntabel, serta dapat dipertanggungjawabkan, BAZNAS Kaltim membentuk Pejabat
+          Pengelola Informasi dan Dokumentasi (PPID) berdasarkan Keputusan Ketua BAZNAS Nomor 042 Tahun 2022 tentang
+          Penetapan PPID BAZNAS.
         </p>
 
         <h4 class="mt-4 fw-bold">Tujuan Pembentukan PPID BAZNAS Kaltim</h4>
@@ -60,7 +70,8 @@
         {% if pimpinan.foto %}
         <img src="{{ pimpinan.foto.url }}" class="card-img-top" alt="{{ pimpinan.nama }}">
         {% else %}
-        <img src="https://ui-avatars.com/api/?name={{ pimpinan.nama|urlencode }}&background=0D8ABC&color=fff&size=300" class="card-img-top" alt="{{ pimpinan.nama }}">
+        <img src="https://ui-avatars.com/api/?name={{ pimpinan.nama|urlencode }}&background=0D8ABC&color=fff&size=300"
+          class="card-img-top" alt="{{ pimpinan.nama }}">
         {% endif %}
         <div class="card-body text-center">
           <h5 class="card-title fw-bold mb-2">{{ pimpinan.nama }}</h5>
@@ -68,7 +79,7 @@
           <p class="card-subtitle text-muted mb-2">{{ pimpinan.jabatan }}</p>
           {% endif %}
           {% if pimpinan.deskripsi %}
-          <p class="card-text">{{ pimpinan.deskripsi|truncatewords:25 }}</p>
+          <p class="card-text">{{ pimpinan.deskripsi|safe|truncatewords:200 }}</p>
           {% endif %}
         </div>
       </div>

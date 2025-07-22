@@ -3,6 +3,18 @@
 {% block title %}{{ title }} Pimpinan{% endblock %}
 
 {% block content %}
+{{ form.media }}
+<h1 class="mb-4">{{ title }} Pimpinan</h1>
+
+<form method="post" enctype="multipart/form-data" class="mb-4">
+    {% csrf_token %}
+    <div class="mb-3">
+        {{ form.nama.label_tag }}
+        {{ form.nama }}
+        {% if form.nama.errors %}
+        <div class="text-danger">{{ form.nama.errors }}</div>
+        {% endif %}
+    </div>
 <div class="row mt-5">
   <div class="col-lg-8 col-md-10 mx-auto">
     <div class="card shadow border-0 rounded-4">
@@ -22,6 +34,13 @@
             {% endif %}
           </div>
 
+    <div class="mb-3">
+        {{ form.foto.label_tag }}
+        {{ form.foto }}
+        {% if form.foto.errors %}
+        <div class="text-danger">{{ form.foto.errors }}</div>
+        {% endif %}
+    </div>
           <div class="mb-4">
             <label class="form-label fw-semibold">Foto Pimpinan</label>
             {{ form.foto|add_class:"form-control" }}
@@ -30,6 +49,13 @@
             {% endif %}
           </div>
 
+    <div class="mb-3">
+        {{ form.deskripsi.label_tag }}
+        {{ form.deskripsi }}
+        {% if form.deskripsi.errors %}
+        <div class="text-danger">{{ form.deskripsi.errors }}</div>
+        {% endif %}
+    </div>
           <div class="mb-4">
             <label class="form-label fw-semibold">Deskripsi</label>
             {{ form.deskripsi }}
