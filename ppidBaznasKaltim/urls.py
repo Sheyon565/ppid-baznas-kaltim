@@ -5,8 +5,8 @@ app_name = 'ppid'
 
 urlpatterns = [
     #### Admin ####
-    path('admin/users/', views.user_list, name='user_list'),
-    path('admin/users/add/', views.user_create, name='user_create'),
+    path('admin-users/', views.user_list, name='user_list'),
+    path('admin-users-add/', views.user_create, name='user_create'),
     path('admin-dashboard/', views.admin_dashboard, name='admin_dashboard'),
     path('admin-login/', views.login_view, name='login'),
     path('admin-logout/', views.logout_view, name='logout'),
