@@ -11,8 +11,8 @@
         <strong>PPID</strong> <span style="font-weight: normal;">Baznas Kaltim</span>
       </span>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" id="navToggle" aria-controls="navbarNav" aria-expanded="false"
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -123,8 +123,8 @@
 {% block js %}
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const navButton = document.querySelector(".navbar-toggler");
-    const navBarList = document.querySelector("#navbarNav");
+    const navButton = document.getElementById("navToggle");
+    const navBarList = document.getElementById("navbarNav");
 
     const bsCollapse = new bootstrap.Collapse(navBarList, {
       toggle: false
@@ -140,13 +140,9 @@
       }
     });
 
-    navBarList.addEventListener("show.bs.collapse", function () {
-      isShown = true;
-    });
+    navBarList.addEventListener("show.bs.collapse", () => isShow = true);
 
-    navBarList.addEventListener("hidden.bs.collapse", function () {
-      isShown = false;
-    })
+    navBarList.addEventListener("hidden.bs.collapse", () => isShown = false)
   });
 </script>
 {% endblock %}
