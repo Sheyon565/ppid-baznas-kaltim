@@ -42,7 +42,7 @@
             <ul class="dropdown-menu" aria-labelledby="layananDropdown">
 
               <!-- Submenu: Formulir -->
-              <li class="dropdown-submenu position-relative">
+              <li class="dropdown-submenu dropdown position-relative">
                 <a class="dropdown-item dropdown-toggle" href="#" id="formulirDropdown" role="button">
                   Formulir
                 </a>
@@ -153,6 +153,11 @@
     submenuTrigger.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
+
+      document.querySelectorAll('.dropdown-submenu .dropdown-menu.show').forEach(el => {
+        if (el !== submenu) el.classList.remove("show");
+      });
+
       submenu.classList.toggle("show");
     });
 
