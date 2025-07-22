@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.forms import CustomUserChangeForm
 from .models import ArtikelBaznas, Pimpinan
 from .forms import ArtikelForms, PimpinanForm
 
@@ -35,13 +35,16 @@ def user_create(request):
 @login_required
 def edit_akun(request):
     if request.method == 'POST':
-        form = UserChangeForm(request.POST, instance=request.user)
+        form = CustomUserChangeForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect('ppid:user_list')  # Atau ke dashboard admin
+            messages.success(request, 'Akun berhasil diperbarui.')
+            return redirect('ppid:user_list')
     else:
-        form = UserChangeForm(instance=request.user)
+        form = CustomUserChangeForm(instance=request.user)
     return render(request, 'admin/edit_akun.html', {'form': form})
+
+
 
 #### Admin ####
 def is_admin(user):

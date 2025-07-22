@@ -1,6 +1,7 @@
 from django import forms 
 from django_ckeditor_5.widgets import CKEditor5Widget
-from .models import ArtikelBaznas, Pimpinan
+from .models import ArtikelBaznas, Pimpinan, User
+from django.contrib.auth.forms import UserChangeForm
     
 class ArtikelForms(forms.ModelForm):
     class Meta:
@@ -53,3 +54,42 @@ class PimpinanForm(forms.ModelForm):
             ),
             'deskripsi': CKEditor5Widget(config_name='extends'),
         }
+
+class CustomUserChangeForm(UserChangeForm):
+    password1 = forms.CharField(
+        label='Password Baru', required=False, widget=forms.PasswordInput(attrs={'class': 'form-control'})
+    )
+    password2 = forms.CharField(
+        label='Konfirmasi Password Baru', required=False, widget=forms.PasswordInput(attrs={'class': 'form-control'})
+    )
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'first_name')  # Bisa ditambah kalau perlu
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password1 = cleaned_data.get("password1")
+        password2 = cleaned_data.get("password2")
+
+        if password1 or password2:
+            if password1 != password2:
+                raise forms.ValidationError("Password baru dan konfirmasi tidak cocok.")
+
+        return cleaned_data
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        password = self.cleaned_data.get("password1")
+
+        if password:
+            user.set_password(password)
+
+        if commit:
+            user.save()
+        return user
