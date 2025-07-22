@@ -92,12 +92,12 @@ def logout_view(request):
     return redirect('ppid:login')
 
 def artikel_list(request):
-    artikels = ArtikelBaznas.objects.filter(status=True).order_by('-created_at')
+    artikels = ArtikelBaznas.objects.filter(status=True).order_by('-created_at')[:3]
     return render(request, 'Artikel/artikel_list.html', {'artikels': artikels})
 
 def artikel_detail(request, pk):
     artikel = get_object_or_404(ArtikelBaznas, pk=pk, status=True)
-    return render(request, 'Artikel/artikel_detail.html', {'artikel': artikel})
+    return render(request, 'Artikel/detail_artikel.html', {'artikel': artikel})
 
 @login_required
 def artikel_create(request):

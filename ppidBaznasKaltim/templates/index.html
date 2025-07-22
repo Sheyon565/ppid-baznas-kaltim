@@ -125,7 +125,7 @@
             <small class="text-muted">{{ artikel.created_at|date:"d M Y" }}</small>
             <h5 class="card-title mt-2">{{ artikel.judul }}</h5>
             <p class="card-text text-muted">{{ artikel.konten|safe|truncatewords:20 }}</p>
-            <a href="/" class="btn btn-success btn-sm">Baca Selengkapnya</a>
+            <a href="{% url 'ppid:artikel_detail' artikel.pk %}" class="btn btn-success btn-sm">Baca Selengkapnya</a>
           </div>
         </div>
       </div>
