@@ -63,15 +63,16 @@ def login_view(request):
         if username and password:
             user = authenticate(request, username=username, password=password)
 
-            if user is not None and user.is_staff:
+            if user is not None and (user.is_staff or user.groups.filter(name='Operator').exists()):
                 login(request, user)
                 return redirect('ppid:admin_dashboard')
             else:
-                messages.error(request, 'Username atau password salah atau Anda tidak punya akses admin.')
+                messages.error(request, 'Username atau password salah atau Anda tidak punya akses.')
         else:
             messages.error(request, 'Mohon isi username dan password.')
 
-    return render(request, 'admin/admin_login.html')  # template kustom kamu
+    return render(request, 'admin/admin_login.html')
+
 
 @login_required(login_url='ppid:login')
 def admin_dashboard(request):
