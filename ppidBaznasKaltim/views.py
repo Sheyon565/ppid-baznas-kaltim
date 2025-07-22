@@ -5,9 +5,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.forms import CustomUserChangeForm
 from .models import ArtikelBaznas, Pimpinan
-from .forms import ArtikelForms, PimpinanForm
+from .forms import ArtikelForms, PimpinanForm, CustomUserChangeForm
 
 def is_admin_or_operator(user):
     return user.is_superuser or user.groups.filter(name='Operator').exists()
