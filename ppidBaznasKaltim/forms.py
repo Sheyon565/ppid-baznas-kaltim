@@ -57,16 +57,15 @@ class PimpinanForm(forms.ModelForm):
 
 class CustomUserChangeForm(forms.ModelForm):
     password = forms.CharField(
-        label="Ganti Password (opsional)",
+        label="Ganti Password",
         widget=forms.PasswordInput(attrs={'class': 'form-control'}),
         required=False
     )
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'first_name')
+        fields = ('username', 'email')
         widgets = {
             'username': forms.TextInput(attrs={'class': 'form-control'}),
             'email': forms.EmailInput(attrs={'class': 'form-control'}),
-            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
         }
