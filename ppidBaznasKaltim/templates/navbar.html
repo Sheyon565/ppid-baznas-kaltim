@@ -145,4 +145,22 @@
     navBarList.addEventListener("hidden.bs.collapse", () => isShown = false)
   });
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const submenuTrigger = document.getElementById("formulirDropdown");
+    const submenu = submenuTrigger.nextElementSibling;
+
+    submenuTrigger.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      submenu.classList.toggle("show");
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!submenu.contains(e.target) && !submenuTrigger.contains(e.target)) {
+        submenu.classList.remove("show");
+      }
+    })
+  })
+</script>
 {% endblock %}
