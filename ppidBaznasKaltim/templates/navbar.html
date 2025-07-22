@@ -130,13 +130,23 @@
       toggle: false
     });
 
+    let isShown = false;
+
     navButton.addEventListener("click", function () {
-      if (navBarList.classList.contains("show")) {
+      if (isShown) {
         bsCollapse.hide();
       } else {
         bsCollapse.show();
       }
     });
+
+    navBarList.addEventListener("show.bs.collapse", function () {
+      isShown = true;
+    });
+
+    navBarList.addEventListener("hidden.bs.collapse", function () {
+      isShown = false;
+    })
   });
 </script>
 {% endblock %}
