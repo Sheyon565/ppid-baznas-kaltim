@@ -146,4 +146,30 @@
     navBarList.addEventListener("hidden.bs.collapse", () => isShown = false)
   });
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    function isMobileView() {
+      return window.innerWidth < 992;
+    }
+
+    const submenuToggle = document.querySelector("#formulirDropdown");
+    const submenu = submenuToggle?.nextElementSibling;
+
+    submenuToggle?.addEventListener("click", (e) => {
+      if (isMobileView()) {
+        e.preventDefault();
+        e.stopPropagation();
+        submenu.classList.toggle("show");
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      if (isMobileView()) {
+        if (!submenu.contains(e.target) && !submenuToggle.contains(e.target)) {
+          submenu.classList.remove("show");
+        }
+      }
+    })
+  })
+</script>
 {% endblock %}
