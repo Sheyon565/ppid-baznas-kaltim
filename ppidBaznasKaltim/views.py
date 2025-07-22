@@ -11,7 +11,7 @@ from .forms import ArtikelForms, PimpinanForm
 ### User ###
 def user_list(request):
     users = User.objects.all()
-    return render(request, 'user_list.html', {'users': users})
+    return render(request, 'admin/user_list.html', {'users': users})
 
 # Tambah user
 def user_create(request):
@@ -22,7 +22,7 @@ def user_create(request):
             return redirect('ppid:user_list')
     else:
         form = UserCreationForm()
-    return render(request, 'user_form.html', {'form': form})
+    return render(request, 'admin/user_form.html', {'form': form})
 
 #### Admin ####
 def is_admin(user):
