@@ -172,7 +172,7 @@ customColorPalette = [
     {'color': 'hsl(207, 90%, 54%)', 'label': 'Blue'},
 ]
 
-CKEDITOR_5_CUSTOM_CSS = 'path_to.css'  # optional
+
 CKEDITOR_5_ALLOW_ALL_IMAGE_UPLOADS = True
 CKEDITOR_5_RESTRICTED_USER_UPLOAD = True
 
