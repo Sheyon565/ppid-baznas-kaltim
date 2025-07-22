@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import TemplateView, CreateView
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -36,13 +36,16 @@ def edit_akun(request):
     if request.method == 'POST':
         form = CustomUserChangeForm(request.POST, instance=request.user)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Akun berhasil diperbarui.')
+            user = form.save(commit=False)
+            password = form.cleaned_data.get('password')
+            if password:
+                user.set_password(password)
+                update_session_auth_hash(request, user)  # Penting agar user tidak logout
+            user.save()
             return redirect('ppid:user_list')
     else:
         form = CustomUserChangeForm(instance=request.user)
     return render(request, 'admin/edit_akun.html', {'form': form})
-
 
 
 #### Admin ####

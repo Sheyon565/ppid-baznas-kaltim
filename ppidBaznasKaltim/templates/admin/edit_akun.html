@@ -3,24 +3,23 @@
 <div class="container mt-5">
   <h2>Edit Akun</h2>
   <form method="post">
-    {% csrf_token %}
-    {{ form.non_field_errors }}
-    
-    {% for field in form %}
-      <div class="mb-3">
-        <label class="form-label">{{ field.label }}</label>
-        {{ field }}
-        {% if field.help_text %}
-          <div class="form-text">{{ field.help_text }}</div>
-        {% endif %}
-        {% for error in field.errors %}
-          <div class="text-danger">{{ error }}</div>
-        {% endfor %}
-      </div>
-    {% endfor %}
-    
-    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-    <a href="{% url 'ppid:user_list' %}" class="btn btn-secondary">Kembali</a>
-  </form>
+  {% csrf_token %}
+  {{ form.non_field_errors }}
+  <div class="mb-3">
+    {{ form.username.label_tag }}{{ form.username }}
+  </div>
+  <div class="mb-3">
+    {{ form.email.label_tag }}{{ form.email }}
+  </div>
+  <div class="mb-3">
+    {{ form.first_name.label_tag }}{{ form.first_name }}
+  </div>
+  <div class="mb-3">
+    {{ form.password.label_tag }}{{ form.password }}
+    <small class="text-muted">Biarkan kosong jika tidak ingin mengganti password.</small>
+  </div>
+  <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+  <a href="{% url 'ppid:user_list' %}" class="btn btn-secondary">Kembali</a>
+</form>
 </div>
 {% endblock %}
